@@ -34,21 +34,47 @@
 
   /* CURSOR */
   .cursor {
-    position: fixed; width: 10px; height: 10px;
+    position: fixed; width: 12px; height: 12px;
     background: var(--accent);
     border-radius: 50%;
     pointer-events: none; z-index: 9999;
     transform: translate(-50%, -50%);
     transition: width 0.2s, height 0.2s;
-    mix-blend-mode: screen;
+    box-shadow: 0 0 10px 4px rgba(168,85,247,0.7), 0 0 24px 8px rgba(168,85,247,0.35);
   }
   .cursor-ring {
-    position: fixed; width: 36px; height: 36px;
-    border: 1px solid rgba(168,85,247,0.45);
+    position: fixed; width: 38px; height: 38px;
+    border: 1px solid rgba(168,85,247,0.5);
     border-radius: 50%;
     pointer-events: none; z-index: 9998;
     transform: translate(-50%, -50%);
     transition: all 0.13s ease;
+    box-shadow: 0 0 12px 2px rgba(168,85,247,0.2);
+  }
+  .trail-particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9997;
+    transform: translate(-50%, -50%);
+    animation: trailFade 0.6s ease-out forwards;
+  }
+  @keyframes trailFade {
+    0%   { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0;   transform: translate(-50%, -50%) scale(0.1); }
+  }
+  .ripple {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9996;
+    transform: translate(-50%, -50%) scale(0);
+    border: 2px solid rgba(168,85,247,0.7);
+    animation: rippleOut 0.6s ease-out forwards;
+  }
+  @keyframes rippleOut {
+    0%   { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
   }
 
   /* NOISE */
@@ -730,7 +756,7 @@
       <h2 class="section-title reveal">Let's build something.</h2>
       <p class="contact-lead reveal">Graduating May 2026 and open to full-time software engineering roles. I bring full-stack skills plus real-world ops experience — a combination most new grads don't have.</p>
       <div class="contact-links reveal">
-        <a href="mailto:pdev0168@gmail.com" class="contact-link">
+        <a href="/cdn-cgi/l/email-protection#42322627347273747a02252f232b2e6c212d2f" class="contact-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Email Me
         </a>
@@ -752,15 +778,62 @@
   <p>Glade Spring, VA — Open to Relocation</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
+  let lastTrailX = 0, lastTrailY = 0;
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     cursor.style.left = mx + 'px';
     cursor.style.top = my + 'px';
+
+    // Trail particles
+    const dist = Math.hypot(mx - lastTrailX, my - lastTrailY);
+    if (dist > 12) {
+      lastTrailX = mx; lastTrailY = my;
+      const size = Math.random() * 6 + 3;
+      const p = document.createElement('div');
+      p.className = 'trail-particle';
+      const hue = Math.random() > 0.5 ? '168,85,247' : '192,132,252';
+      p.style.cssText = `
+        left:${mx}px; top:${my}px;
+        width:${size}px; height:${size}px;
+        background: rgba(${hue}, ${Math.random() * 0.5 + 0.4});
+        box-shadow: 0 0 ${size * 2}px rgba(168,85,247,0.6);
+        animation-duration: ${Math.random() * 0.4 + 0.4}s;
+      `;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 800);
+    }
+  });
+
+  // Click ripple
+  document.addEventListener('click', e => {
+    const r = document.createElement('div');
+    r.className = 'ripple';
+    r.style.cssText = `left:${e.clientX}px; top:${e.clientY}px; width:30px; height:30px;`;
+    document.body.appendChild(r);
+
+    // Extra burst particles on click
+    for (let i = 0; i < 8; i++) {
+      const p = document.createElement('div');
+      p.className = 'trail-particle';
+      const angle = (i / 8) * Math.PI * 2;
+      const dist = Math.random() * 30 + 15;
+      p.style.cssText = `
+        left:${e.clientX + Math.cos(angle) * dist}px;
+        top:${e.clientY + Math.sin(angle) * dist}px;
+        width:5px; height:5px;
+        background: rgba(192,132,252,0.9);
+        box-shadow: 0 0 8px rgba(168,85,247,0.8);
+        animation-duration: 0.7s;
+      `;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 800);
+    }
+    setTimeout(() => r.remove(), 700);
   });
 
   (function animateRing() {
@@ -773,12 +846,14 @@
 
   document.querySelectorAll('a, button, .project-card, .stat-card, .edu-card').forEach(el => {
     el.addEventListener('mouseenter', () => {
-      cursor.style.width = '18px'; cursor.style.height = '18px';
+      cursor.style.width = '20px'; cursor.style.height = '20px';
+      cursor.style.boxShadow = '0 0 18px 8px rgba(168,85,247,0.8), 0 0 40px 14px rgba(168,85,247,0.4)';
       ring.style.width = '54px'; ring.style.height = '54px';
     });
     el.addEventListener('mouseleave', () => {
-      cursor.style.width = '10px'; cursor.style.height = '10px';
-      ring.style.width = '36px'; ring.style.height = '36px';
+      cursor.style.width = '12px'; cursor.style.height = '12px';
+      cursor.style.boxShadow = '0 0 10px 4px rgba(168,85,247,0.7), 0 0 24px 8px rgba(168,85,247,0.35)';
+      ring.style.width = '38px'; ring.style.height = '38px';
     });
   });
 
@@ -786,11 +861,4 @@
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
         setTimeout(() => e.target.classList.add('visible'), i * 80);
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+        observer.unobserve(e.targe
