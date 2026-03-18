@@ -48,7 +48,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;justify-content
 /* ══ PROGRESS BAR ══ */
 #prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#ff3300,#ff6600);z-index:800;width:0;transition:width .1s linear;box-shadow:0 0 8px rgba(255,51,0,.5)}
 
-/* ══ SCROLL INDICATOR (right side) ══ */
+/* ══ SCROLL INDICATOR ══ */
 #scrollind{position:fixed;right:clamp(.875rem,2vw,1.75rem);top:50%;transform:translateY(-50%);z-index:600;display:flex;flex-direction:column;gap:.5rem;align-items:center}
 .sind{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .3s;border:none;padding:0;cursor:none}
 .sind.on{background:#ff3300;transform:scale(1.6)}
@@ -223,231 +223,276 @@ footer span{color:#ff3300}
 <div id="prog"></div>
 
 <nav>
-<div class="nl">Dev Patel</div>
-<div class="nr">
-<a href="#hero">Home</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#experience">Work</a>
-<a href="#contact">Contact</a>
-<div class="avail">Available May 2026</div>
-</div>
+  <div class="nl">Dev Patel</div>
+  <div class="nr">
+    <a href="#hero">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Work</a>
+    <a href="#contact">Contact</a>
+    <div class="avail">Available May 2026</div>
+  </div>
 </nav>
 
 <div id="scrollind">
-<button class="sind on" onclick="scrollTo({top:0,behavior:'smooth'})"></button>
-<button class="sind" onclick="document.getElementById('numbers').scrollIntoView({behavior:'smooth'})"></button>
-<button class="sind" onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})"></button>
-<button class="sind" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})"></button>
-<button class="sind" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})"></button>
-<button class="sind" onclick="document.getElementById('education').scrollIntoView({behavior:'smooth'})"></button>
-<button class="sind" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"></button>
+  <button class="sind on" onclick="scrollTo({top:0,behavior:'smooth'})"></button>
+  <button class="sind" onclick="document.getElementById('numbers').scrollIntoView({behavior:'smooth'})"></button>
+  <button class="sind" onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})"></button>
+  <button class="sind" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})"></button>
+  <button class="sind" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})"></button>
+  <button class="sind" onclick="document.getElementById('education').scrollIntoView({behavior:'smooth'})"></button>
+  <button class="sind" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"></button>
 </div>
 
 <!-- ══ HERO ══ -->
 <section id="hero">
-<div class="hero-tag">Full-Stack Developer · CS '26 · East Tennessee State University</div>
-<div class="heroname">
-<span class="hn1" data-t="DEV">DEV</span>
-<span class="hn2"><span class="ac">PATEL</span>.</span>
-</div>
-<div class="hero-bottom">
-<p class="hero-desc">Building production apps backed by 5+ years of real-world IT ops. I ship things that survive contact with reality.</p>
-<div class="hero-btns">
-<a href="#projects" class="btnf">View Work</a>
-<a href="#contact" class="btno">Contact</a>
-</div>
-<div class="hero-scroll"><div class="hero-scrollline"></div><span>Scroll</span></div>
-</div>
+  <div class="hero-tag">Full-Stack Developer · CS '26 · East Tennessee State University</div>
+  <div class="heroname">
+    <span class="hn1" data-t="DEV">DEV</span>
+    <span class="hn2"><span class="ac">PATEL</span>.</span>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-desc">Building production apps backed by 5+ years of real-world IT ops. I ship things that survive contact with reality.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btnf">View Work</a>
+      <a href="#contact" class="btno">Contact</a>
+    </div>
+    <div class="hero-scroll"><div class="hero-scrollline"></div><span>Scroll</span></div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- ══ NUMBERS ══ -->
 <section id="numbers">
-<div class="seclab">About</div>
-<div class="numgrid">
-<div class="numb reveal"><div class="numv">5+</div><div class="numl">Years IT Ops</div><div class="numd">Real operations before graduation</div></div>
-<div class="numb reveal"><div class="numv">6</div><div class="numl">Languages</div><div class="numd">Java · Python · C# · PHP · JS · SQL</div></div>
-<div class="numb reveal"><div class="numv">40%</div><div class="numl">Perf Gain</div><div class="numd">Page load improvement on live app</div></div>
-<div class="numb reveal"><div class="numv">T5</div><div class="numl">Competition</div><div class="numd">Top 5 of 10 teams — university AI build</div></div>
-</div>
-<p class="bio reveal">CS senior at <strong>East Tennessee State University</strong>, graduating May 2026. I combine <strong>full-stack development</strong> with hands-on IT operations most devs only read about. Proficient in <strong>Java, Python, C#, PHP, JavaScript and SQL</strong>. Based in Glade Spring, VA — open to relocation.</p>
+  <div class="seclab">About</div>
+  <div class="numgrid">
+    <div class="numb reveal"><div class="numv">5+</div><div class="numl">Years IT Ops</div><div class="numd">Real operations before graduation</div></div>
+    <div class="numb reveal"><div class="numv">6</div><div class="numl">Languages</div><div class="numd">Java · Python · C# · PHP · JS · SQL</div></div>
+    <div class="numb reveal"><div class="numv">40%</div><div class="numl">Perf Gain</div><div class="numd">Page load improvement on live app</div></div>
+    <div class="numb reveal"><div class="numv">T5</div><div class="numl">Competition</div><div class="numd">Top 5 of 10 teams — university AI build</div></div>
+  </div>
+  <p class="bio reveal">CS senior at <strong>East Tennessee State University</strong>, graduating May 2026. I combine <strong>full-stack development</strong> with hands-on IT operations most devs only read about. Proficient in <strong>Java, Python, C#, PHP, JavaScript and SQL</strong>. Based in Glade Spring, VA — open to relocation.</p>
 </section>
 
 <div class="divider"></div>
 
 <!-- ══ SKILLS ══ -->
 <section id="skills">
-<div class="skills-top reveal">
-<div class="skills-title">Skills<br>&amp; <span>Stack</span></div>
-<div style="font-size:clamp(.48rem,.72vw,.6rem);letter-spacing:.15em;color:rgba(255,255,255,.18);text-transform:uppercase">18 Technologies</div>
-</div>
-<div class="marqwrap"><div class="marqtrack">
-<span class="h">JavaScript</span><span>Python</span><span>Java</span><span class="h">MySQL</span><span>C#</span><span>PHP</span><span class="h">AWS EC2</span><span>REST APIs</span><span>.NET/OOP</span><span class="h">Git</span><span>Session Auth</span><span class="h">SQL Injection Prevention</span><span>HTML/CSS</span><span>Agile</span><span>Cross-Browser Testing</span><span>PMS Systems</span>
-<span class="h">JavaScript</span><span>Python</span><span>Java</span><span class="h">MySQL</span><span>C#</span><span>PHP</span><span class="h">AWS EC2</span><span>REST APIs</span><span>.NET/OOP</span><span class="h">Git</span><span>Session Auth</span><span class="h">SQL Injection Prevention</span><span>HTML/CSS</span><span>Agile</span><span>Cross-Browser Testing</span><span>PMS Systems</span>
-</div></div>
-<div class="skillgrid reveal">
-<div>
-<div class="skgt">Languages</div>
-<div class="skrow"><span class="skname">JavaScript</span><div class="skbar"><div class="skfill" data-w=".92"></div></div><span class="skpct">92%</span></div>
-<div class="skrow"><span class="skname">SQL / MySQL</span><div class="skbar"><div class="skfill" data-w=".88"></div></div><span class="skpct">88%</span></div>
-<div class="skrow"><span class="skname">Python</span><div class="skbar"><div class="skfill" data-w=".85"></div></div><span class="skpct">85%</span></div>
-<div class="skrow"><span class="skname">Java</span><div class="skbar"><div class="skfill" data-w=".80"></div></div><span class="skpct">80%</span></div>
-<div class="skrow"><span class="skname">C# / PHP</span><div class="skbar"><div class="skfill" data-w=".78"></div></div><span class="skpct">78%</span></div>
-</div>
-<div>
-<div class="skgt">Frameworks &amp; Infra</div>
-<div class="skrow"><span class="skname">AWS EC2</span><div class="skbar"><div class="skfill" data-w=".75"></div></div><span class="skpct">75%</span></div>
-<div class="skrow"><span class="skname">REST APIs</span><div class="skbar"><div class="skfill" data-w=".82"></div></div><span class="skpct">82%</span></div>
-<div class="skrow"><span class="skname">Session Auth</span><div class="skbar"><div class="skfill" data-w=".85"></div></div><span class="skpct">85%</span></div>
-<div class="skrow"><span class="skname">.NET / OOP</span><div class="skbar"><div class="skfill" data-w=".78"></div></div><span class="skpct">78%</span></div>
-<div class="skrow"><span class="skname">SQL Injection Prevention</span><div class="skbar"><div class="skfill" data-w=".88"></div></div><span class="skpct">88%</span></div>
-</div>
-<div>
-<div class="skgt">Tools &amp; Practices</div>
-<div class="skrow"><span class="skname">Git / GitHub</span><div class="skbar"><div class="skfill" data-w=".90"></div></div><span class="skpct">90%</span></div>
-<div class="skrow"><span class="skname">Agile</span><div class="skbar"><div class="skfill" data-w=".75"></div></div><span class="skpct">75%</span></div>
-<div class="skrow"><span class="skname">Cross-browser Testing</span><div class="skbar"><div class="skfill" data-w=".82"></div></div><span class="skpct">82%</span></div>
-<div class="skrow"><span class="skname">PMS Systems</span><div class="skbar"><div class="skfill" data-w=".90"></div></div><span class="skpct">90%</span></div>
-<div class="skrow"><span class="skname">Technical Docs</span><div class="skbar"><div class="skfill" data-w=".85"></div></div><span class="skpct">85%</span></div>
-</div>
-</div>
+  <div class="skills-top reveal">
+    <div class="skills-title">Skills<br>&amp; <span>Stack</span></div>
+    <div style="font-size:clamp(.48rem,.72vw,.6rem);letter-spacing:.15em;color:rgba(255,255,255,.18);text-transform:uppercase">18 Technologies</div>
+  </div>
+  <div class="marqwrap"><div class="marqtrack">
+    <span class="h">JavaScript</span><span>Python</span><span>Java</span><span class="h">MySQL</span><span>C#</span><span>PHP</span><span class="h">AWS EC2</span><span>REST APIs</span><span>.NET/OOP</span><span class="h">Git</span><span>Session Auth</span><span class="h">SQL Injection Prevention</span><span>HTML/CSS</span><span>Agile</span><span>Cross-Browser Testing</span><span>PMS Systems</span>
+    <span class="h">JavaScript</span><span>Python</span><span>Java</span><span class="h">MySQL</span><span>C#</span><span>PHP</span><span class="h">AWS EC2</span><span>REST APIs</span><span>.NET/OOP</span><span class="h">Git</span><span>Session Auth</span><span class="h">SQL Injection Prevention</span><span>HTML/CSS</span><span>Agile</span><span>Cross-Browser Testing</span><span>PMS Systems</span>
+  </div></div>
+  <div class="skillgrid reveal">
+    <div>
+      <div class="skgt">Languages</div>
+      <div class="skrow"><span class="skname">JavaScript</span><div class="skbar"><div class="skfill" data-w=".92"></div></div><span class="skpct">92%</span></div>
+      <div class="skrow"><span class="skname">SQL / MySQL</span><div class="skbar"><div class="skfill" data-w=".88"></div></div><span class="skpct">88%</span></div>
+      <div class="skrow"><span class="skname">Python</span><div class="skbar"><div class="skfill" data-w=".85"></div></div><span class="skpct">85%</span></div>
+      <div class="skrow"><span class="skname">Java</span><div class="skbar"><div class="skfill" data-w=".80"></div></div><span class="skpct">80%</span></div>
+      <div class="skrow"><span class="skname">C# / PHP</span><div class="skbar"><div class="skfill" data-w=".78"></div></div><span class="skpct">78%</span></div>
+    </div>
+    <div>
+      <div class="skgt">Frameworks &amp; Infra</div>
+      <div class="skrow"><span class="skname">AWS EC2</span><div class="skbar"><div class="skfill" data-w=".75"></div></div><span class="skpct">75%</span></div>
+      <div class="skrow"><span class="skname">REST APIs</span><div class="skbar"><div class="skfill" data-w=".82"></div></div><span class="skpct">82%</span></div>
+      <div class="skrow"><span class="skname">Session Auth</span><div class="skbar"><div class="skfill" data-w=".85"></div></div><span class="skpct">85%</span></div>
+      <div class="skrow"><span class="skname">.NET / OOP</span><div class="skbar"><div class="skfill" data-w=".78"></div></div><span class="skpct">78%</span></div>
+      <div class="skrow"><span class="skname">SQL Injection Prevention</span><div class="skbar"><div class="skfill" data-w=".88"></div></div><span class="skpct">88%</span></div>
+    </div>
+    <div>
+      <div class="skgt">Tools &amp; Practices</div>
+      <div class="skrow"><span class="skname">Git / GitHub</span><div class="skbar"><div class="skfill" data-w=".90"></div></div><span class="skpct">90%</span></div>
+      <div class="skrow"><span class="skname">Agile</span><div class="skbar"><div class="skfill" data-w=".75"></div></div><span class="skpct">75%</span></div>
+      <div class="skrow"><span class="skname">Cross-browser Testing</span><div class="skbar"><div class="skfill" data-w=".82"></div></div><span class="skpct">82%</span></div>
+      <div class="skrow"><span class="skname">PMS Systems</span><div class="skbar"><div class="skfill" data-w=".90"></div></div><span class="skpct">90%</span></div>
+      <div class="skrow"><span class="skname">Technical Docs</span><div class="skbar"><div class="skfill" data-w=".85"></div></div><span class="skpct">85%</span></div>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- ══ PROJECTS ══ -->
 <section id="projects">
-<div class="proj-head reveal">
-<div class="proj-title">Selected<br>Projects</div>
-<div class="proj-hint">← Swipe to explore</div>
-</div>
-<div class="proj-scroll">
+  <div class="proj-head reveal">
+    <div class="proj-title">Selected<br>Projects</div>
+    <div class="proj-hint">← Swipe to explore</div>
+  </div>
+  <div class="proj-scroll">
 
-<div class="pcard feat reveal">
-<div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Featured · Live</div><div class="pctopnum">01</div><canvas class="pcgfx" id="fx0"></canvas></div>
-<div class="pcbody">
-<div class="pcname">Full-Stack Motel<br>Booking Platform</div>
-<p class="pcdesc">Production reservation system on AWS EC2. 40% faster page loads, 100% cross-device compatibility. Secure session auth + SQL injection prevention. 50+ real users.</p>
-<div class="pcfoot"><div class="pcstack">PHP · MySQL · AWS EC2</div><div class="pcbadge">Live Deploy</div></div>
-</div>
-</div>
+    <!-- 01 - Motel Booking -->
+    <div class="pcard feat reveal">
+      <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Featured · Live</div><div class="pctopnum">01</div><canvas class="pcgfx" id="fx0"></canvas></div>
+      <div class="pcbody">
+        <div class="pcname">Full-Stack Motel<br>Booking Platform</div>
+        <p class="pcdesc">Production reservation system on AWS EC2. 40% faster page loads, 100% cross-device compatibility. Secure session auth + SQL injection prevention. 50+ real users.</p>
+        <div class="pcfoot"><div class="pcstack">PHP · MySQL · AWS EC2</div><div class="pcbadge">Live Deploy</div></div>
+      </div>
+    </div>
 
-<div class="pcard reveal">
-<div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">C# · AI</div><div class="pctopnum">02</div><canvas class="pcgfx" id="fx1"></canvas></div>
-<div class="pcbody">
-<div class="pcname">Robot Cave Fight<br>AI Battle Game</div>
-<p class="pcdesc">Adaptive AI combat + custom animations. Placed 5th of 10 teams in a university-wide competition.</p>
-<div class="pcfoot"><div class="pcstack">C# · .NET · OOP</div><div class="pcbadge">Top 5</div></div>
-</div>
-</div>
+    <!-- 02 - DataLens (NEW) -->
+    <div class="pcard feat reveal">
+      <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#00ff88,#00d4ff,transparent)"></div><div class="pctoplabel" style="color:#00ff88;border-color:rgba(0,255,136,.3);background:rgba(0,255,136,.06)">Data · SQL · Live</div><div class="pctopnum">02</div><canvas class="pcgfx" id="fx1"></canvas></div>
+      <div class="pcbody">
+        <div class="pcname">DataLens<br>SQL Analyzer</div>
+        <p class="pcdesc">Drop any CSV file and run real SQL queries against it in the browser. Live charts, GROUP BY, AVG, SUM — no server needed. Built for data analysis workflows.</p>
+        <div class="pcfoot">
+          <div class="pcstack">JavaScript · AlaSQL · Chart.js</div>
+          <a href="https://thedev21.github.io/datalens" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer;color:#00ff88;border-color:rgba(0,255,136,.25)">Live ↗</a>
+        </div>
+      </div>
+    </div>
 
-<div class="pcard reveal">
-<div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">C# · SQL</div><div class="pctopnum">03</div><canvas class="pcgfx" id="fx2"></canvas></div>
-<div class="pcbody">
-<div class="pcname">Survey<br>Application</div>
-<p class="pcdesc">C# + SQL tool, 100+ mock users. UX cut input errors by 60%. 20+ commits across 3 Git branches.</p>
-<div class="pcfoot"><div class="pcstack">C# · SQL · GitHub</div><div class="pcbadge">−60% Errors</div></div>
-</div>
-</div>
+    <!-- 03 - Robot Cave Fight -->
+    <div class="pcard reveal">
+      <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">C# · AI</div><div class="pctopnum">03</div><canvas class="pcgfx" id="fx2"></canvas></div>
+      <div class="pcbody">
+        <div class="pcname">Robot Cave Fight<br>AI Battle Game</div>
+        <p class="pcdesc">Adaptive AI combat + custom animations. Placed 5th of 10 teams in a university-wide competition.</p>
+        <div class="pcfoot"><div class="pcstack">C# · .NET · OOP</div><div class="pcbadge">Top 5</div></div>
+      </div>
+    </div>
 
-<div class="pcard reveal">
-<div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">IT Ops</div><div class="pctopnum">04</div><canvas class="pcgfx" id="fx3"></canvas></div>
-<div class="pcbody">
-<div class="pcname">Hotel IT Ops<br>&amp; SOP System</div>
-<p class="pcdesc">Internal SOPs for POS + auth recovery. Cut tech delays 30%. Training materials for 5+ staff.</p>
-<div class="pcfoot"><div class="pcstack">IT Ops · PMS · Docs</div><div class="pcbadge">−30% Delays</div></div>
-</div>
-</div>
+    <!-- 04 - Survey App -->
+    <div class="pcard reveal">
+      <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">C# · SQL</div><div class="pctopnum">04</div><canvas class="pcgfx" id="fx3"></canvas></div>
+      <div class="pcbody">
+        <div class="pcname">Survey<br>Application</div>
+        <p class="pcdesc">C# + SQL tool, 100+ mock users. UX cut input errors by 60%. 20+ commits across 3 Git branches.</p>
+        <div class="pcfoot"><div class="pcstack">C# · SQL · GitHub</div><div class="pcbadge">−60% Errors</div></div>
+      </div>
+    </div>
 
-<div class="pcard reveal">
-<div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Security · Live</div><div class="pctopnum">05</div><canvas class="pcgfx" id="fx4"></canvas></div>
-<div class="pcbody">
-<div class="pcname">PassGuard<br>Password Analyzer</div>
-<p class="pcdesc">Real-time password strength analyzer with entropy calculation, crack time estimation, and a cryptographically secure password generator. 100% client-side.</p>
-<div class="pcfoot"><div class="pcstack">HTML · CSS · JS · Web Crypto API</div><a href="https://thedev21.github.io/passguard" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer">Live ↗</a></div>
-</div>
-</div>
+    <!-- 05 - Searchlight (NEW) -->
+    <div class="pcard reveal">
+      <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#3b82f6,#6366f1,transparent)"></div><div class="pctoplabel" style="color:#3b82f6;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.06)">Search · UX · Live</div><div class="pctopnum">05</div><canvas class="pcgfx" id="fx4"></canvas></div>
+      <div class="pcbody">
+        <div class="pcname">Searchlight<br>Search UI</div>
+        <p class="pcdesc">Production-grade search interface with fuzzy matching algorithm, debounced input, skeleton loaders, keyboard navigation (↑↓ Enter Esc), and live result highlighting.</p>
+        <div class="pcfoot">
+          <div class="pcstack">HTML · CSS · JavaScript</div>
+          <a href="https://thedev21.github.io/searchlight" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer;color:#3b82f6;border-color:rgba(59,130,246,.25)">Live ↗</a>
+        </div>
+      </div>
+    </div>
 
-<div class="pcard reveal">
-<div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Game · Live</div><div class="pctopnum">06</div><canvas class="pcgfx" id="fx5"></canvas></div>
-<div class="pcbody">
-<div class="pcname">TypeBlitz<br>Speed Test</div>
-<p class="pcdesc">Real-time typing speed test with WPM tracking, accuracy, streaks and rank system. Three time modes — 30s, 60s, 120s.</p>
-<div class="pcfoot"><div class="pcstack">HTML · CSS · JS</div><a href="https://thedev21.github.io/typeblitz" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer">Live ↗</a></div>
-</div>
-</div>
+    <!-- 06 - Hotel IT Ops -->
+    <div class="pcard reveal">
+      <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">IT Ops</div><div class="pctopnum">06</div><canvas class="pcgfx" id="fx5"></canvas></div>
+      <div class="pcbody">
+        <div class="pcname">Hotel IT Ops<br>&amp; SOP System</div>
+        <p class="pcdesc">Internal SOPs for POS + auth recovery. Cut tech delays 30%. Training materials for 5+ staff.</p>
+        <div class="pcfoot"><div class="pcstack">IT Ops · PMS · Docs</div><div class="pcbadge">−30% Delays</div></div>
+      </div>
+    </div>
 
-</div>
+    <!-- 07 - COSMOS (NEW) -->
+    <div class="pcard reveal">
+      <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#a855f7,#3b82f6,transparent)"></div><div class="pctoplabel" style="color:#a855f7;border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.06)">Physics · Canvas · Live</div><div class="pctopnum">07</div><canvas class="pcgfx" id="fx6"></canvas></div>
+      <div class="pcbody">
+        <div class="pcname">COSMOS<br>Gravity Simulator</div>
+        <p class="pcdesc">N-body physics simulation rendered on HTML5 Canvas. Spawn stars, planets and black holes. Real gravity, momentum conservation, collision merging, and galaxy presets.</p>
+        <div class="pcfoot">
+          <div class="pcstack">HTML5 Canvas · Physics · JS</div>
+          <a href="https://thedev21.github.io/cosmos" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer;color:#a855f7;border-color:rgba(168,85,247,.25)">Live ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 - PassGuard -->
+    <div class="pcard reveal">
+      <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Security · Live</div><div class="pctopnum">08</div><canvas class="pcgfx" id="fx7"></canvas></div>
+      <div class="pcbody">
+        <div class="pcname">PassGuard<br>Password Analyzer</div>
+        <p class="pcdesc">Real-time password strength analyzer with entropy calculation, crack time estimation, and a cryptographically secure password generator. 100% client-side.</p>
+        <div class="pcfoot"><div class="pcstack">HTML · CSS · JS · Web Crypto API</div><a href="https://thedev21.github.io/passguard" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer">Live ↗</a></div>
+      </div>
+    </div>
+
+    <!-- 09 - TypeBlitz -->
+    <div class="pcard reveal">
+      <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Game · Live</div><div class="pctopnum">09</div><canvas class="pcgfx" id="fx8"></canvas></div>
+      <div class="pcbody">
+        <div class="pcname">TypeBlitz<br>Speed Test</div>
+        <p class="pcdesc">Real-time typing speed test with WPM tracking, accuracy, streaks and rank system. Three time modes — 30s, 60s, 120s.</p>
+        <div class="pcfoot"><div class="pcstack">HTML · CSS · JS</div><a href="https://thedev21.github.io/typeblitz" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer">Live ↗</a></div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- ══ EXPERIENCE ══ -->
 <section id="experience">
-<div class="exp-title reveal">Work<br>Experience</div>
-<div class="exrow reveal">
-<div><div class="exdate">Sept 2019 — Present</div><div class="excurr">● Current</div></div>
-<div><div class="exrole">Front Desk Manager</div><div class="exco">EconoLodge · Glade Spring, VA</div>
-<ul class="expts"><li>300–400 monthly check-ins via ChoiceAdvantage PMS · 95%+ satisfaction</li><li>POS + auth recovery SOPs — cut tech delays 30%</li><li>Trained 5+ staff on IT troubleshooting</li></ul></div>
-</div>
-<div class="exrow reveal">
-<div><div class="exdate">May 2022 — Aug 2022</div></div>
-<div><div class="exrole">Front Desk Manager</div><div class="exco">Quality Inn · Abingdon, VA</div>
-<ul class="expts"><li>100+ weekly guests during peak season</li><li>Hardened admin auth — login errors cut 50%</li></ul></div>
-</div>
-<div class="exrow reveal">
-<div><div class="exdate">May 2026</div><div class="excurr exnext">● Next</div></div>
-<div><div class="exrole" style="color:rgba(255,255,255,.3)">Your Company</div><div class="exco" style="color:rgba(255,255,255,.18)">Anywhere · Full-time</div>
-<ul class="expts"><li>Open to relocation · Engineering roles</li><li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c5b5a1a0b3f5f4f3fd85a2a8a4aca9eba6aaa8">[email&#160;protected]</a></li></ul></div>
-</div>
+  <div class="exp-title reveal">Work<br>Experience</div>
+  <div class="exrow reveal">
+    <div><div class="exdate">Sept 2019 — Present</div><div class="excurr">● Current</div></div>
+    <div><div class="exrole">Front Desk Manager</div><div class="exco">EconoLodge · Glade Spring, VA</div>
+    <ul class="expts"><li>300–400 monthly check-ins via ChoiceAdvantage PMS · 95%+ satisfaction</li><li>POS + auth recovery SOPs — cut tech delays 30%</li><li>Trained 5+ staff on IT troubleshooting</li></ul></div>
+  </div>
+  <div class="exrow reveal">
+    <div><div class="exdate">May 2022 — Aug 2022</div></div>
+    <div><div class="exrole">Front Desk Manager</div><div class="exco">Quality Inn · Abingdon, VA</div>
+    <ul class="expts"><li>100+ weekly guests during peak season</li><li>Hardened admin auth — login errors cut 50%</li></ul></div>
+  </div>
+  <div class="exrow reveal">
+    <div><div class="exdate">May 2026</div><div class="excurr exnext">● Next</div></div>
+    <div><div class="exrole" style="color:rgba(255,255,255,.3)">Your Company</div><div class="exco" style="color:rgba(255,255,255,.18)">Anywhere · Full-time</div>
+    <ul class="expts"><li>Open to relocation · Engineering roles</li></ul></div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- ══ EDUCATION ══ -->
 <section id="education">
-<div class="edu-title reveal">Education</div>
-<div class="edugrid reveal">
-<div class="edublock">
-<div class="edudeg">B.S. Computer Science</div>
-<div class="edusch">East Tennessee State University · Johnson City, TN</div>
-<div class="edudet">Expected May 2026 · Data Structures · Algorithms · Web Dev · Databases · OOP</div>
-</div>
-<div class="edublock">
-<div class="edudeg">A.S. Computer Science</div>
-<div class="edusch">Virginia Highlands CC · Abingdon, VA</div>
-<div class="edudet">December 2022 · Academic Excellence</div>
-<div class="eduaward">Vice President's List</div>
-</div>
-</div>
+  <div class="edu-title reveal">Education</div>
+  <div class="edugrid reveal">
+    <div class="edublock">
+      <div class="edudeg">B.S. Computer Science</div>
+      <div class="edusch">East Tennessee State University · Johnson City, TN</div>
+      <div class="edudet">Expected May 2026 · Data Structures · Algorithms · Web Dev · Databases · OOP</div>
+    </div>
+    <div class="edublock">
+      <div class="edudeg">A.S. Computer Science</div>
+      <div class="edusch">Virginia Highlands CC · Abingdon, VA</div>
+      <div class="edudet">December 2022 · Academic Excellence</div>
+      <div class="eduaward">Vice President's List</div>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- ══ CONTACT ══ -->
 <section id="contact">
-<div class="ctitle reveal">
-<span class="cs">LET'S</span>
-<span class="cf">BUILD</span>
-<span class="cr">SOMETHING.</span>
-</div>
-<p class="csub reveal">Graduating May 2026. Open to full-time engineering roles. Full-stack skills + real ops experience most grads don't have.</p>
-<div class="clinks reveal">
-<a href="/cdn-cgi/l/email-protection#ff8f9b9a89cfcec9c7bf98929e9693d19c9092" class="clink cp"><span class="__cf_email__" data-cfemail="64140001125455525c240309050d084a070b09">[email&#160;protected]</span></a>
-<a href="https://linkedin.com/in/dev-patel-988277249" target="_blank" class="clink">LinkedIn ↗</a>
-<a href="tel:+12764926340" class="clink">(276) 492-6340</a>
-</div>
-<div class="cavail reveal">Available for hire · May 2026 · Glade Spring VA · Open to Relocation</div>
+  <div class="ctitle reveal">
+    <span class="cs">LET'S</span>
+    <span class="cf">BUILD</span>
+    <span class="cr">SOMETHING.</span>
+  </div>
+  <p class="csub reveal">Graduating May 2026. Open to full-time engineering roles. Full-stack skills + real ops experience most grads don't have.</p>
+  <div class="clinks reveal">
+    <a href="mailto:devpatel@email.com" class="clink cp">devpatel@email.com</a>
+    <a href="https://linkedin.com/in/dev-patel-988277249" target="_blank" class="clink">LinkedIn ↗</a>
+    <a href="tel:+12764926340" class="clink">(276) 492-6340</a>
+  </div>
+  <div class="cavail reveal">Available for hire · May 2026 · Glade Spring VA · Open to Relocation</div>
 </section>
 
 <footer>
-<p>© 2026 <span>Dev Patel</span>. All rights reserved.</p>
-<p>Glade Spring, VA — Open to Relocation</p>
+  <p>© 2026 <span>Dev Patel</span>. All rights reserved.</p>
+  <p>Glade Spring, VA — Open to Relocation</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ══ GRAIN ══
 const gc=document.getElementById('grain'),gx=gc.getContext('2d');
 gc.width=250;gc.height=250;
@@ -461,11 +506,11 @@ let mx=W/2,my=H/2,t=0;
 window.addEventListener('resize',()=>{W=bgc.width=window.innerWidth;H=bgc.height=window.innerHeight});
 const pts=Array.from({length:70},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:Math.random()*1.1+.2,a:Math.random()*.25+.06}));
 function drawBg(){
-bgx.fillStyle='rgba(0,0,0,.1)';bgx.fillRect(0,0,W,H);
-for(let i=0;i<3;i++){bgx.strokeStyle=`rgba(255,${30+i*10},0,${.035-i*.008})`;bgx.lineWidth=1;bgx.beginPath();for(let x=0;x<=W;x+=4){const y=H/2+Math.sin(x*.007+t+i*1.1)*50+Math.sin(x*.018+t*.8+i)*(12+(my-H/2)*.03);x===0?bgx.moveTo(x,y):bgx.lineTo(x,y);}bgx.stroke();}
-pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;const dx=mx-p.x,dy=my-p.y,d=Math.sqrt(dx*dx+dy*dy);if(d<180){p.vx+=dx/d*.006;p.vy+=dy/d*.006;}p.vx*=.999;p.vy*=.999;bgx.beginPath();bgx.arc(p.x,p.y,p.r,0,Math.PI*2);bgx.fillStyle=`rgba(255,51,0,${p.a})`;bgx.fill();});
-for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){bgx.beginPath();bgx.moveTo(pts[i].x,pts[i].y);bgx.lineTo(pts[j].x,pts[j].y);bgx.strokeStyle=`rgba(255,51,0,${.05*(1-d/100)})`;bgx.lineWidth=.5;bgx.stroke();}}
-t+=.012;requestAnimationFrame(drawBg);
+  bgx.fillStyle='rgba(0,0,0,.1)';bgx.fillRect(0,0,W,H);
+  for(let i=0;i<3;i++){bgx.strokeStyle=`rgba(255,${30+i*10},0,${.035-i*.008})`;bgx.lineWidth=1;bgx.beginPath();for(let x=0;x<=W;x+=4){const y=H/2+Math.sin(x*.007+t+i*1.1)*50+Math.sin(x*.018+t*.8+i)*(12+(my-H/2)*.03);x===0?bgx.moveTo(x,y):bgx.lineTo(x,y);}bgx.stroke();}
+  pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;const dx=mx-p.x,dy=my-p.y,d=Math.sqrt(dx*dx+dy*dy);if(d<180){p.vx+=dx/d*.006;p.vy+=dy/d*.006;}p.vx*=.999;p.vy*=.999;bgx.beginPath();bgx.arc(p.x,p.y,p.r,0,Math.PI*2);bgx.fillStyle=`rgba(255,51,0,${p.a})`;bgx.fill();});
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){bgx.beginPath();bgx.moveTo(pts[i].x,pts[i].y);bgx.lineTo(pts[j].x,pts[j].y);bgx.strokeStyle=`rgba(255,51,0,${.05*(1-d/100)})`;bgx.lineWidth=.5;bgx.stroke();}}
+  t+=.012;requestAnimationFrame(drawBg);
 }
 drawBg();
 
@@ -474,53 +519,58 @@ const cur=document.getElementById('cur');
 let cmx=W/2,cmy=H/2;
 const isTouch=('ontouchstart' in window);
 if(!isTouch){
-const trails=[];
-for(let i=0;i<10;i++){const d=document.createElement('div');const sz=Math.max(2,4.5-i*.35);d.className='trdot';d.style.cssText=`width:${sz}px;height:${sz}px;background:rgba(255,${51+i*10},0,${.5-i*.045})`;document.body.appendChild(d);trails.push({el:d,x:cmx,y:cmy});}
-document.addEventListener('mousemove',e=>{cmx=e.clientX;cmy=e.clientY;mx=e.clientX;my=e.clientY;cur.style.opacity='1';});
-(function cl(){cur.style.left=cmx+'px';cur.style.top=cmy+'px';for(let i=trails.length-1;i>=0;i--){const p=i===0?{x:cmx,y:cmy}:trails[i-1];trails[i].x+=(p.x-trails[i].x)*.22;trails[i].y+=(p.y-trails[i].y)*.22;trails[i].el.style.left=trails[i].x+'px';trails[i].el.style.top=trails[i].y+'px';}requestAnimationFrame(cl);})();
-document.querySelectorAll('a,button,.pcard,.numb,.edublock').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.width='22px';cur.style.height='22px'});el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px'});});
+  const trails=[];
+  for(let i=0;i<10;i++){const d=document.createElement('div');const sz=Math.max(2,4.5-i*.35);d.className='trdot';d.style.cssText=`width:${sz}px;height:${sz}px;background:rgba(255,${51+i*10},0,${.5-i*.045})`;document.body.appendChild(d);trails.push({el:d,x:cmx,y:cmy});}
+  document.addEventListener('mousemove',e=>{cmx=e.clientX;cmy=e.clientY;mx=e.clientX;my=e.clientY;cur.style.opacity='1';});
+  (function cl(){cur.style.left=cmx+'px';cur.style.top=cmy+'px';for(let i=trails.length-1;i>=0;i--){const p=i===0?{x:cmx,y:cmy}:trails[i-1];trails[i].x+=(p.x-trails[i].x)*.22;trails[i].y+=(p.y-trails[i].y)*.22;trails[i].el.style.left=trails[i].x+'px';trails[i].el.style.top=trails[i].y+'px';}requestAnimationFrame(cl);})();
+  document.querySelectorAll('a,button,.pcard,.numb,.edublock').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.width='22px';cur.style.height='22px'});el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px'});});
 }
 document.addEventListener('touchmove',e=>{mx=e.touches[0].clientX;my=e.touches[0].clientY;},{passive:true});
 
 // ══ SCROLL PROGRESS BAR ══
 const prog=document.getElementById('prog');
 window.addEventListener('scroll',()=>{
-const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
-prog.style.width=pct+'%';
-const sections=['hero','numbers','skills','projects','experience','education','contact'];
-const sinds=document.querySelectorAll('.sind');
-let active=0;
-sections.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=window.innerHeight*.5)active=i;});
-sinds.forEach((d,i)=>d.classList.toggle('on',i===active));
+  const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  prog.style.width=pct+'%';
+  const sections=['hero','numbers','skills','projects','experience','education','contact'];
+  const sinds=document.querySelectorAll('.sind');
+  let active=0;
+  sections.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=window.innerHeight*.5)active=i;});
+  sinds.forEach((d,i)=>d.classList.toggle('on',i===active));
 },{passive:true});
 
 // ══ SCROLL REVEAL ══
 const revEls=document.querySelectorAll('.reveal,.reveal-left');
 const ro=new IntersectionObserver(entries=>{
-entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*80);ro.unobserve(e.target);}});
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*80);ro.unobserve(e.target);}});
 },{threshold:.12});
 revEls.forEach(el=>ro.observe(el));
 
 // ══ SKILL BARS ══
 const skillObs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.skfill').forEach(b=>b.style.transform=`scaleX(${b.dataset.w})`);skillObs.disconnect();}});
+  entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.skfill').forEach(b=>b.style.transform=`scaleX(${b.dataset.w})`);skillObs.disconnect();}});
 },{threshold:.2});
 const skillSec=document.getElementById('skills');
 if(skillSec)skillObs.observe(skillSec);
 
 // ══ PROJECT CARD WAVEFORMS ══
 function cardFx(id,c1,c2){
-const cv=document.getElementById(id);if(!cv)return;
-cv.width=cv.offsetWidth||420;cv.height=cv.offsetHeight||170;
-const cx=cv.getContext('2d');let t=0;
-(function f(){cx.fillStyle='rgba(0,0,0,.12)';cx.fillRect(0,0,cv.width,cv.height);[c1,c2].forEach((c,i)=>{cx.strokeStyle=c;cx.lineWidth=1;cx.globalAlpha=.32-i*.08;cx.beginPath();for(let x=0;x<=cv.width;x+=2){const y=cv.height/2+Math.sin(x*.04+t+i*.9)*26+Math.sin(x*.085+t*.7+i)*12;x===0?cx.moveTo(x,y):cx.lineTo(x,y);}cx.stroke();cx.globalAlpha=1;});t+=.018;requestAnimationFrame(f);})();
+  const cv=document.getElementById(id);if(!cv)return;
+  cv.width=cv.offsetWidth||420;cv.height=cv.offsetHeight||170;
+  const cx=cv.getContext('2d');let t=0;
+  (function f(){cx.fillStyle='rgba(0,0,0,.12)';cx.fillRect(0,0,cv.width,cv.height);[c1,c2].forEach((c,i)=>{cx.strokeStyle=c;cx.lineWidth=1;cx.globalAlpha=.32-i*.08;cx.beginPath();for(let x=0;x<=cv.width;x+=2){const y=cv.height/2+Math.sin(x*.04+t+i*.9)*26+Math.sin(x*.085+t*.7+i)*12;x===0?cx.moveTo(x,y):cx.lineTo(x,y);}cx.stroke();cx.globalAlpha=1;});t+=.018;requestAnimationFrame(f);})();
 }
-cardFx('fx0','#ff3300','#ff6600');
-cardFx('fx1','#0088ff','#00bbff');
-cardFx('fx2','#00ff88','#00ffcc');
-cardFx('fx3','#aa00ff','#cc44ff');
-cardFx('fx4','#ff3300','#00ff88');
-cardFx('fx5','#e8ff47','#ff6b35');
+
+// Original cards
+cardFx('fx0','#ff3300','#ff6600');   // Motel
+cardFx('fx1','#00ff88','#00d4ff');   // DataLens — green/cyan
+cardFx('fx2','#0088ff','#00bbff');   // Robot Cave
+cardFx('fx3','#00ff88','#00ffcc');   // Survey
+cardFx('fx4','#3b82f6','#6366f1');   // Searchlight — blue/indigo
+cardFx('fx5','#aa00ff','#cc44ff');   // Hotel IT Ops
+cardFx('fx6','#a855f7','#3b82f6');   // COSMOS — purple/blue
+cardFx('fx7','#ff3300','#00ff88');   // PassGuard
+cardFx('fx8','#e8ff47','#ff6b35');   // TypeBlitz
 </script>
 </body>
 </html>
