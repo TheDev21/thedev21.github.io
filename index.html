@@ -38,13 +38,48 @@ body{background:#000;color:#fff;font-family:'DM Mono',monospace;font-weight:300;
 nav{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;justify-content:space-between;align-items:center;padding:clamp(.875rem,2vw,1.5rem) clamp(1rem,3vw,2.5rem);mix-blend-mode:difference}
 .nl{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,2vw,1.3rem);letter-spacing:.15em}
 .nr{display:flex;gap:clamp(.75rem,2vw,2rem);align-items:center}
-/* FIXED: nav links brighter from .45 → .72 */
 .nr a{font-size:clamp(.48rem,.75vw,.62rem);letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.72);text-decoration:none;transition:color .2s;white-space:nowrap}
 .nr a:hover{color:#fff}
 .avail{font-size:clamp(.44rem,.68vw,.56rem);letter-spacing:.15em;color:#00ff88;display:flex;align-items:center;gap:.35rem;white-space:nowrap}
 .avail::before{content:'';width:4px;height:4px;border-radius:50%;background:#00ff88;flex-shrink:0;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
 @media(max-width:480px){.nr a{display:none}}
+
+/* ══ HAMBURGER BUTTON ══ */
+.hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:38px;height:38px;background:transparent;border:1px solid rgba(255,255,255,.12);cursor:none;z-index:1100;position:relative;flex-shrink:0;transition:border-color .25s}
+.hamburger:hover{border-color:rgba(255,51,0,.5)}
+.hamburger span{display:block;width:16px;height:1px;background:#fff;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;width:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media(pointer:coarse){.hamburger{cursor:pointer}}
+
+/* ══ MOBILE MENU OVERLAY ══ */
+#mobileMenu{position:fixed;inset:0;z-index:1000;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(5rem,12vw,8rem) clamp(2rem,6vw,5rem);pointer-events:none;opacity:0;transform:translateX(100%);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1)}
+#mobileMenu.open{opacity:1;transform:translateX(0);pointer-events:all}
+#mobileMenu::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 4px);pointer-events:none}
+.mmtag{font-size:clamp(.44rem,.68vw,.56rem);letter-spacing:.28em;text-transform:uppercase;color:rgba(255,51,0,.6);margin-bottom:clamp(1.5rem,4vw,2.5rem);display:flex;align-items:center;gap:.75rem}
+.mmtag::before{content:'';width:20px;height:1px;background:rgba(255,51,0,.6)}
+.mmlinks{display:flex;flex-direction:column;gap:clamp(.5rem,2vw,1rem);width:100%}
+.mmlink{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,12vw,7rem);letter-spacing:-.02em;line-height:.9;color:rgba(255,255,255,.08);text-decoration:none;transition:color .3s,transform .3s;display:flex;align-items:center;gap:1rem;position:relative;transform:translateX(30px);opacity:0}
+#mobileMenu.open .mmlink{opacity:1;transform:translateX(0)}
+#mobileMenu.open .mmlink:nth-child(1){transition-delay:.08s}
+#mobileMenu.open .mmlink:nth-child(2){transition-delay:.14s}
+#mobileMenu.open .mmlink:nth-child(3){transition-delay:.20s}
+#mobileMenu.open .mmlink:nth-child(4){transition-delay:.26s}
+#mobileMenu.open .mmlink:nth-child(5){transition-delay:.32s}
+#mobileMenu.open .mmlink:nth-child(6){transition-delay:.38s}
+.mmlink:hover{color:#fff;transform:translateX(8px) !important}
+.mmlink:hover .mmnum{color:#ff3300}
+.mmnum{font-family:'DM Mono',monospace;font-size:clamp(.48rem,.7vw,.6rem);color:rgba(255,51,0,.4);letter-spacing:.15em;align-self:flex-start;margin-top:.4rem;transition:color .3s;flex-shrink:0}
+.mmlink.active-section{color:rgba(255,255,255,.55)}
+.mmlink.active-section .mmnum{color:#ff3300}
+.mm-bottom{position:absolute;bottom:clamp(2rem,5vh,4rem);left:clamp(2rem,6vw,5rem);right:clamp(2rem,6vw,5rem);display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem}
+.mm-contact-links{display:flex;gap:1rem;flex-wrap:wrap}
+.mm-contact-links a{font-size:clamp(.48rem,.7vw,.58rem);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);text-decoration:none;transition:color .2s}
+.mm-contact-links a:hover{color:#ff3300}
+.mm-avail{font-size:clamp(.44rem,.64vw,.54rem);letter-spacing:.18em;text-transform:uppercase;color:rgba(0,255,136,.4);display:flex;align-items:center;gap:.4rem}
+.mm-avail::before{content:'';width:4px;height:4px;border-radius:50%;background:#00ff88;animation:blink 2s infinite}
 
 /* ══ PROGRESS BAR ══ */
 #prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#ff3300,#ff6600);z-index:800;width:0;transition:width .1s linear;box-shadow:0 0 8px rgba(255,51,0,.5)}
@@ -73,7 +108,6 @@ section{position:relative;z-index:10;width:100%}
 @keyframes glA{0%,88%,100%{opacity:0}89%{opacity:1;clip-path:inset(0 0 72% 0);transform:translateX(-5px)}91%{clip-path:inset(35% 0 45% 0);transform:translateX(5px)}93%{clip-path:inset(65% 0 18% 0);transform:translateX(-3px)}94%{opacity:0}}
 @keyframes glB{0%,88%,100%{opacity:0}90%{opacity:1;clip-path:inset(65% 0 8% 0);transform:translateX(5px)}92%{clip-path:inset(20% 0 58% 0);transform:translateX(-4px)}94%{opacity:0}}
 .hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;margin-top:clamp(2rem,4vw,3.5rem);gap:1.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .95s forwards}
-/* FIXED: hero description brighter from .35 → .72 */
 .hero-desc{font-size:clamp(.68rem,1.1vw,.85rem);color:rgba(255,255,255,.72);line-height:1.8;max-width:clamp(220px,38vw,400px)}
 .hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
 .btnf{font-family:'DM Mono',monospace;font-size:clamp(.52rem,.78vw,.68rem);letter-spacing:.1em;text-transform:uppercase;padding:clamp(.625rem,.9vw,.875rem) clamp(.875rem,1.5vw,1.75rem);background:#ff3300;color:#fff;border:none;text-decoration:none;transition:all .25s;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));white-space:nowrap;cursor:none;display:inline-block}
@@ -102,11 +136,8 @@ section{position:relative;z-index:10;width:100%}
 .numb:hover{background:#090909}
 .numb:hover::after{width:100%}
 .numv{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,7vw,7rem);letter-spacing:-.03em;line-height:.85;color:#ff3300;margin-bottom:.5rem}
-/* decorative label stays dim — intentional */
 .numl{font-size:clamp(.48rem,.68vw,.58rem);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:.35rem}
-/* FIXED: num description brighter from .18 → .52 */
 .numd{font-size:clamp(.62rem,.92vw,.75rem);color:rgba(255,255,255,.52);line-height:1.65}
-/* FIXED: bio brighter from .28 → .65, strong from .65 → .88 */
 .bio{margin-top:clamp(2rem,4vw,3rem);font-size:clamp(.7rem,1.05vw,.875rem);color:rgba(255,255,255,.65);line-height:1.95;max-width:850px;border-left:2px solid #ff3300;padding-left:1.25rem}
 .bio strong{color:rgba(255,255,255,.88);font-weight:400}
 
@@ -125,14 +156,11 @@ section{position:relative;z-index:10;width:100%}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .skillgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.25rem,2.5vw,2.5rem)}
 @media(max-width:700px){.skillgrid{grid-template-columns:1fr}}
-/* decorative category label stays dim */
 .skgt{font-size:clamp(.48rem,.68vw,.58rem);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:clamp(.875rem,1.5vw,1.25rem);padding-bottom:.625rem;border-bottom:1px solid rgba(255,255,255,.05)}
 .skrow{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.03)}
-/* FIXED: skill names brighter from .4 → .72 */
 .skname{font-size:clamp(.62rem,.92vw,.78rem);color:rgba(255,255,255,.72)}
 .skbar{flex:1;height:1px;background:rgba(255,255,255,.07);margin:0 .875rem;position:relative;overflow:hidden}
 .skfill{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,#ff3300,#ff6600);transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.4,0,.2,1)}
-/* FIXED: skill percent brighter from .2 → .5 */
 .skpct{font-size:clamp(.48rem,.68vw,.58rem);color:rgba(255,255,255,.5);white-space:nowrap}
 
 /* ══ PROJECTS ══ */
@@ -142,9 +170,15 @@ section{position:relative;z-index:10;width:100%}
 .proj-hint{font-size:clamp(.46rem,.68vw,.58rem);letter-spacing:.15em;color:rgba(255,255,255,.18);text-transform:uppercase}
 .proj-scroll{display:flex;gap:clamp(.875rem,1.5vw,1.5rem);overflow-x:auto;scrollbar-width:none;padding-bottom:1rem;-webkit-overflow-scrolling:touch}
 .proj-scroll::-webkit-scrollbar{display:none}
-.pcard{flex-shrink:0;width:clamp(260px,36vw,420px);background:#050505;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:transform .4s cubic-bezier(.34,1.56,.64,1),border-color .3s;cursor:none}
+
+/* ══ PROJECT CARD LINK WRAPPER ══ */
+.pcard-link{text-decoration:none;color:inherit;display:block;flex-shrink:0}
+.pcard-link .pcard{flex-shrink:0}
+
+.pcard{width:clamp(260px,36vw,420px);background:#050505;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:transform .4s cubic-bezier(.34,1.56,.64,1),border-color .3s;cursor:none}
 .pcard:hover{transform:translateY(-10px) rotate(-.3deg);border-color:rgba(255,51,0,.3)}
 .pcard.feat{width:clamp(280px,42vw,500px);background:linear-gradient(135deg,rgba(255,51,0,.07),rgba(255,100,0,.02))}
+@media(pointer:coarse){.pcard{cursor:pointer}}
 .pctop{height:clamp(110px,16vh,170px);position:relative;overflow:hidden;background:#080808}
 .pctopbar{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ff3300,#ff6600,transparent);box-shadow:0 0 20px rgba(255,51,0,.4)}
 .pctoplabel{position:absolute;top:.875rem;left:.875rem;font-size:clamp(.44rem,.62vw,.54rem);letter-spacing:.18em;text-transform:uppercase;color:#ff3300;border:1px solid rgba(255,51,0,.3);padding:.15rem .45rem;background:rgba(255,51,0,.06)}
@@ -152,10 +186,8 @@ section{position:relative;z-index:10;width:100%}
 .pcgfx{position:absolute;inset:0;width:100%;height:100%}
 .pcbody{padding:clamp(1.25rem,2vw,1.75rem)}
 .pcname{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.3rem,2.2vw,1.75rem);letter-spacing:.02em;line-height:1.05;margin-bottom:.625rem}
-/* FIXED: project description brighter from .3 → .62 */
 .pcdesc{font-size:clamp(.62rem,.92vw,.78rem);color:rgba(255,255,255,.62);line-height:1.7;margin-bottom:1rem}
 .pcfoot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);padding-top:.875rem;flex-wrap:wrap;gap:.5rem}
-/* FIXED: project stack brighter from .18 → .48 */
 .pcstack{font-size:clamp(.48rem,.68vw,.58rem);color:rgba(255,255,255,.48);letter-spacing:.05em}
 .pcbadge{font-size:clamp(.48rem,.68vw,.58rem);color:#ff3300;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,51,0,.25);padding:.15rem .5rem;background:rgba(255,51,0,.05);white-space:nowrap}
 
@@ -166,14 +198,12 @@ section{position:relative;z-index:10;width:100%}
 .exrow:first-of-type{border-top:1px solid rgba(255,255,255,.05)}
 .exrow:hover{background:rgba(255,51,0,.03);padding-left:.75rem}
 @media(max-width:550px){.exrow{grid-template-columns:1fr;gap:.5rem}}
-/* FIXED: experience date brighter from .22 → .52 */
 .exdate{font-size:clamp(.56rem,.82vw,.68rem);color:rgba(255,255,255,.52);letter-spacing:.05em;line-height:1.6;padding-top:.2rem}
 .excurr{display:inline-block;margin-top:.4rem;font-size:clamp(.44rem,.62vw,.54rem);letter-spacing:.15em;text-transform:uppercase;color:#00ff88;border:1px solid rgba(0,255,136,.2);padding:.12rem .45rem}
 .exnext{color:#ff3300;border-color:rgba(255,51,0,.2)}
 .exrole{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,2.8vw,2.2rem);letter-spacing:.02em;line-height:1;margin-bottom:.3rem}
 .exco{font-size:clamp(.58rem,.85vw,.68rem);letter-spacing:.1em;color:#ff3300;margin-bottom:.875rem}
 .expts{list-style:none;display:flex;flex-direction:column;gap:.4rem}
-/* FIXED: experience bullets brighter from .28 → .65 */
 .expts li{font-size:clamp(.62rem,.92vw,.78rem);color:rgba(255,255,255,.65);line-height:1.65;padding-left:.875rem;position:relative}
 .expts li::before{content:'//';position:absolute;left:0;color:rgba(255,51,0,.6);font-size:.6rem}
 
@@ -188,7 +218,6 @@ section{position:relative;z-index:10;width:100%}
 .edublock:hover::before{transform:scaleX(1)}
 .edudeg{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,2.6vw,2rem);letter-spacing:.02em;line-height:1;margin-bottom:.35rem}
 .edusch{font-size:clamp(.54rem,.8vw,.68rem);letter-spacing:.1em;color:#ff3300;margin-bottom:.875rem}
-/* FIXED: education details brighter from .25 → .62 */
 .edudet{font-size:clamp(.62rem,.92vw,.8rem);color:rgba(255,255,255,.62);line-height:1.65}
 .eduaward{display:inline-flex;align-items:center;gap:.4rem;margin-top:.75rem;font-size:clamp(.48rem,.7vw,.6rem);letter-spacing:.12em;text-transform:uppercase;color:#ffd700;border:1px solid rgba(255,215,0,.2);padding:.2rem .55rem}
 .eduaward::before{content:'★';font-size:.5rem}
@@ -199,15 +228,12 @@ section{position:relative;z-index:10;width:100%}
 .ctitle .cs{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.12);display:block}
 .ctitle .cf{color:#fff;display:block}
 .ctitle .cr{color:#ff3300;display:block}
-/* FIXED: contact subtitle brighter from .28 → .68 */
 .csub{font-size:clamp(.68rem,1.1vw,.85rem);color:rgba(255,255,255,.68);line-height:1.8;max-width:min(420px,85vw);margin:0 auto clamp(1.75rem,3.5vw,2.75rem)}
 .clinks{display:flex;gap:clamp(.5rem,1.5vw,1rem);justify-content:center;flex-wrap:wrap}
-/* FIXED: contact links brighter from .35 → .72 */
 .clink{font-family:'DM Mono',monospace;font-size:clamp(.5rem,.78vw,.64rem);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);text-decoration:none;padding:clamp(.625rem,.9vw,.875rem) clamp(.875rem,1.5vw,1.75rem);border:1px solid rgba(255,255,255,.1);transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;cursor:none}
 .clink:hover{color:#fff;border-color:#ff3300;background:rgba(255,51,0,.08);transform:translateY(-3px)}
 .clink.cp{background:#ff3300;color:#fff;border-color:#ff3300}
 .clink.cp:hover{background:#ff5520;box-shadow:0 12px 35px rgba(255,51,0,.4)}
-/* decorative availability strip stays dim — intentional */
 .cavail{margin-top:clamp(2rem,5vw,4rem);font-size:clamp(.44rem,.68vw,.56rem);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;gap:.75rem;flex-wrap:wrap}
 .cavail::before,.cavail::after{content:'';width:clamp(15px,3vw,30px);height:1px;background:rgba(255,255,255,.1)}
 
@@ -238,15 +264,35 @@ footer span{color:#ff3300}
 <div id="cur"></div>
 <div id="prog"></div>
 
+<!-- ══ MOBILE MENU OVERLAY ══ -->
+<div id="mobileMenu">
+  <div class="mmtag">Navigation</div>
+  <nav class="mmlinks">
+    <a href="#hero" class="mmlink" onclick="closeMenu()"><span class="mmnum">00</span>Home</a>
+    <a href="#numbers" class="mmlink" onclick="closeMenu()"><span class="mmnum">01</span>About</a>
+    <a href="#skills" class="mmlink" onclick="closeMenu()"><span class="mmnum">02</span>Skills</a>
+    <a href="#projects" class="mmlink" onclick="closeMenu()"><span class="mmnum">03</span>Projects</a>
+    <a href="#experience" class="mmlink" onclick="closeMenu()"><span class="mmnum">04</span>Work</a>
+    <a href="#contact" class="mmlink" onclick="closeMenu()"><span class="mmnum">05</span>Contact</a>
+  </nav>
+  <div class="mm-bottom">
+    <div class="mm-contact-links">
+      <a href="mailto:pdev0168@gmail.com">pdev0168@gmail.com</a>
+      <a href="https://linkedin.com/in/dev-patel-988277249" target="_blank">LinkedIn ↗</a>
+      <a href="https://github.com/thedev21" target="_blank">GitHub ↗</a>
+    </div>
+    <div class="mm-avail">Available May 2026</div>
+  </div>
+</div>
+
 <nav>
   <div class="nl">Dev Patel</div>
   <div class="nr">
-    <a href="#hero">Home</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Work</a>
-    <a href="#contact">Contact</a>
-    <div class="avail">Available May 2026</div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
 
@@ -342,83 +388,97 @@ footer span{color:#ff3300}
   <div class="proj-scroll">
 
     <!-- 01 - DataLens -->
-    <div class="pcard feat reveal">
-      <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#00ff88,#00d4ff,transparent)"></div><div class="pctoplabel" style="color:#00ff88;border-color:rgba(0,255,136,.3);background:rgba(0,255,136,.06)">Data · SQL · Live</div><div class="pctopnum">01</div><canvas class="pcgfx" id="fx1"></canvas></div>
-      <div class="pcbody">
-        <div class="pcname">DataLens<br>SQL Analyzer</div>
-        <p class="pcdesc">Drop any CSV file and run real SQL queries against it in the browser. Live charts, GROUP BY, AVG, SUM — no server needed. Built for data analysis workflows.</p>
-        <div class="pcfoot">
-          <div class="pcstack">JavaScript · AlaSQL · Chart.js</div>
-          <a href="https://thedev21.github.io/datalens" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer;color:#00ff88;border-color:rgba(0,255,136,.25)">Live ↗</a>
+    <a href="https://thedev21.github.io/datalens/" target="_blank" class="pcard-link reveal">
+      <div class="pcard feat">
+        <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#00ff88,#00d4ff,transparent)"></div><div class="pctoplabel" style="color:#00ff88;border-color:rgba(0,255,136,.3);background:rgba(0,255,136,.06)">Data · SQL · Live</div><div class="pctopnum">01</div><canvas class="pcgfx" id="fx1"></canvas></div>
+        <div class="pcbody">
+          <div class="pcname">DataLens<br>SQL Analyzer</div>
+          <p class="pcdesc">Drop any CSV file and run real SQL queries against it in the browser. Live charts, GROUP BY, AVG, SUM — no server needed. Built for data analysis workflows.</p>
+          <div class="pcfoot">
+            <div class="pcstack">JavaScript · AlaSQL · Chart.js</div>
+            <div class="pcbadge" style="color:#00ff88;border-color:rgba(0,255,136,.25)">Live ↗</div>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
 
     <!-- 02 - Robot Cave Fight -->
-    <div class="pcard reveal">
-      <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">C# · AI</div><div class="pctopnum">02</div><canvas class="pcgfx" id="fx2"></canvas></div>
-      <div class="pcbody">
-        <div class="pcname">Robot Cave Fight<br>AI Battle Game</div>
-        <p class="pcdesc">Adaptive AI combat + custom animations. Placed 5th of 40+ teams in a university-wide competition.</p>
-        <div class="pcfoot"><div class="pcstack">C# · .NET · OOP</div><div class="pcbadge">Top 5</div></div>
+    <a href="https://github.com/thedev21" target="_blank" class="pcard-link reveal">
+      <div class="pcard">
+        <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">C# · AI</div><div class="pctopnum">02</div><canvas class="pcgfx" id="fx2"></canvas></div>
+        <div class="pcbody">
+          <div class="pcname">Robot Cave Fight<br>AI Battle Game</div>
+          <p class="pcdesc">Adaptive AI combat + custom animations. Placed 5th of 40+ teams in a university-wide competition.</p>
+          <div class="pcfoot"><div class="pcstack">C# · .NET · OOP</div><div class="pcbadge">Top 5 ↗</div></div>
+        </div>
       </div>
-    </div>
+    </a>
 
     <!-- 03 - Survey App -->
-    <div class="pcard reveal">
-      <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">C# · SQL</div><div class="pctopnum">03</div><canvas class="pcgfx" id="fx3"></canvas></div>
-      <div class="pcbody">
-        <div class="pcname">Survey<br>Application</div>
-        <p class="pcdesc">C# + SQL tool, 100+ mock users. UX cut input errors by 60%. 20+ commits across 3 Git branches.</p>
-        <div class="pcfoot"><div class="pcstack">C# · SQL · GitHub</div><div class="pcbadge">−60% Errors</div></div>
+    <a href="https://thedev21.github.io/survey/" target="_blank" class="pcard-link reveal">
+      <div class="pcard">
+        <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">C# · SQL</div><div class="pctopnum">03</div><canvas class="pcgfx" id="fx3"></canvas></div>
+        <div class="pcbody">
+          <div class="pcname">Survey<br>Application</div>
+          <p class="pcdesc">C# + SQL tool, 100+ mock users. UX cut input errors by 60%. 20+ commits across 3 Git branches.</p>
+          <div class="pcfoot"><div class="pcstack">C# · SQL · GitHub</div><div class="pcbadge">−60% Errors ↗</div></div>
+        </div>
       </div>
-    </div>
+    </a>
 
     <!-- 04 - Searchlight -->
-    <div class="pcard reveal">
-      <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#3b82f6,#6366f1,transparent)"></div><div class="pctoplabel" style="color:#3b82f6;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.06)">Search · UX · Live</div><div class="pctopnum">04</div><canvas class="pcgfx" id="fx4"></canvas></div>
-      <div class="pcbody">
-        <div class="pcname">Searchlight<br>Search UI</div>
-        <p class="pcdesc">Production-grade search interface with fuzzy matching algorithm, debounced input, skeleton loaders, keyboard navigation (↑↓ Enter Esc), and live result highlighting.</p>
-        <div class="pcfoot">
-          <div class="pcstack">HTML · CSS · JavaScript</div>
-          <a href="https://thedev21.github.io/searchlight" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer;color:#3b82f6;border-color:rgba(59,130,246,.25)">Live ↗</a>
+    <a href="https://thedev21.github.io/searchlight/" target="_blank" class="pcard-link reveal">
+      <div class="pcard">
+        <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#3b82f6,#6366f1,transparent)"></div><div class="pctoplabel" style="color:#3b82f6;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.06)">Search · UX · Live</div><div class="pctopnum">04</div><canvas class="pcgfx" id="fx4"></canvas></div>
+        <div class="pcbody">
+          <div class="pcname">Searchlight<br>Search UI</div>
+          <p class="pcdesc">Production-grade search interface with fuzzy matching algorithm, debounced input, skeleton loaders, keyboard navigation (↑↓ Enter Esc), and live result highlighting.</p>
+          <div class="pcfoot">
+            <div class="pcstack">HTML · CSS · JavaScript</div>
+            <div class="pcbadge" style="color:#3b82f6;border-color:rgba(59,130,246,.25)">Live ↗</div>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
 
     <!-- 05 - COSMOS -->
-    <div class="pcard reveal">
-      <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#a855f7,#3b82f6,transparent)"></div><div class="pctoplabel" style="color:#a855f7;border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.06)">Physics · Canvas · Live</div><div class="pctopnum">05</div><canvas class="pcgfx" id="fx6"></canvas></div>
-      <div class="pcbody">
-        <div class="pcname">COSMOS<br>Gravity Simulator</div>
-        <p class="pcdesc">N-body physics simulation rendered on HTML5 Canvas. Spawn stars, planets and black holes. Real gravity, momentum conservation, collision merging, and galaxy presets.</p>
-        <div class="pcfoot">
-          <div class="pcstack">HTML5 Canvas · Physics · JS</div>
-          <a href="https://thedev21.github.io/cosmos" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer;color:#a855f7;border-color:rgba(168,85,247,.25)">Live ↗</a>
+    <a href="https://thedev21.github.io/cosmos/" target="_blank" class="pcard-link reveal">
+      <div class="pcard">
+        <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#a855f7,#3b82f6,transparent)"></div><div class="pctoplabel" style="color:#a855f7;border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.06)">Physics · Canvas · Live</div><div class="pctopnum">05</div><canvas class="pcgfx" id="fx6"></canvas></div>
+        <div class="pcbody">
+          <div class="pcname">COSMOS<br>Gravity Simulator</div>
+          <p class="pcdesc">N-body physics simulation rendered on HTML5 Canvas. Spawn stars, planets and black holes. Real gravity, momentum conservation, collision merging, and galaxy presets.</p>
+          <div class="pcfoot">
+            <div class="pcstack">HTML5 Canvas · Physics · JS</div>
+            <div class="pcbadge" style="color:#a855f7;border-color:rgba(168,85,247,.25)">Live ↗</div>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
 
     <!-- 06 - PassGuard -->
-    <div class="pcard reveal">
-      <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Security · Live</div><div class="pctopnum">06</div><canvas class="pcgfx" id="fx7"></canvas></div>
-      <div class="pcbody">
-        <div class="pcname">PassGuard<br>Password Analyzer</div>
-        <p class="pcdesc">Real-time password strength analyzer with entropy calculation, crack time estimation, and a cryptographically secure password generator. 100% client-side.</p>
-        <div class="pcfoot"><div class="pcstack">HTML · CSS · JS · Web Crypto API</div><a href="https://thedev21.github.io/passguard" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer">Live ↗</a></div>
+    <a href="https://thedev21.github.io/passguard/" target="_blank" class="pcard-link reveal">
+      <div class="pcard">
+        <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Security · Live</div><div class="pctopnum">06</div><canvas class="pcgfx" id="fx7"></canvas></div>
+        <div class="pcbody">
+          <div class="pcname">PassGuard<br>Password Analyzer</div>
+          <p class="pcdesc">Real-time password strength analyzer with entropy calculation, crack time estimation, and a cryptographically secure password generator. 100% client-side.</p>
+          <div class="pcfoot"><div class="pcstack">HTML · CSS · JS · Web Crypto API</div><div class="pcbadge">Live ↗</div></div>
+        </div>
       </div>
-    </div>
+    </a>
 
     <!-- 07 - TypeBlitz -->
-    <div class="pcard reveal">
-      <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Game · Live</div><div class="pctopnum">07</div><canvas class="pcgfx" id="fx8"></canvas></div>
-      <div class="pcbody">
-        <div class="pcname">TypeBlitz<br>Speed Test</div>
-        <p class="pcdesc">Real-time typing speed test with WPM tracking, accuracy, streaks and rank system. Three time modes — 30s, 60s, 120s.</p>
-        <div class="pcfoot"><div class="pcstack">HTML · CSS · JS</div><a href="https://thedev21.github.io/typeblitz" target="_blank" class="pcbadge" style="text-decoration:none;cursor:pointer">Live ↗</a></div>
+    <a href="https://thedev21.github.io/typeblitz/" target="_blank" class="pcard-link reveal">
+      <div class="pcard">
+        <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Game · Live</div><div class="pctopnum">07</div><canvas class="pcgfx" id="fx8"></canvas></div>
+        <div class="pcbody">
+          <div class="pcname">TypeBlitz<br>Speed Test</div>
+          <p class="pcdesc">Real-time typing speed test with WPM tracking, accuracy, streaks and rank system. Three time modes — 30s, 60s, 120s.</p>
+          <div class="pcfoot"><div class="pcstack">HTML · CSS · JS</div><div class="pcbadge">Live ↗</div></div>
+        </div>
       </div>
-    </div>
+    </a>
 
   </div>
 </section>
@@ -489,6 +549,28 @@ footer span{color:#ff3300}
 </footer>
 
 <script>
+// ══ HAMBURGER MENU ══
+let menuOpen = false;
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  hamburger.classList.toggle('open', menuOpen);
+  mobileMenu.classList.toggle('open', menuOpen);
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
+}
+
+function closeMenu() {
+  menuOpen = false;
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close menu on Escape key
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMenu(); });
+
 // ══ GRAIN ══
 const gc=document.getElementById('grain'),gx=gc.getContext('2d');
 gc.width=250;gc.height=250;
