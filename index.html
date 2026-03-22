@@ -10,21 +10,11 @@
 html{scroll-behavior:smooth}
 body{background:#000;color:#fff;font-family:'DM Mono',monospace;font-weight:300;overflow-x:hidden;cursor:none}
 @media(pointer:coarse){body{cursor:auto}}
-
-/* ══ CURSOR ══ */
 #cur{position:fixed;width:10px;height:10px;background:#fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;opacity:0;transition:width .2s,height .2s;top:0;left:0}
 .trdot{position:fixed;border-radius:50%;pointer-events:none;z-index:9996;top:0;left:0}
-
-/* ══ CANVAS BG ══ */
 #bgc{position:fixed;inset:0;z-index:0;pointer-events:none}
-
-/* ══ GRAIN ══ */
 #grain{position:fixed;inset:0;z-index:500;pointer-events:none;opacity:.035;width:100%;height:100%;image-rendering:pixelated}
-
-/* ══ SCANLINES ══ */
 #scan{position:fixed;inset:0;z-index:499;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.04) 2px,rgba(0,0,0,.04) 4px)}
-
-/* ══ CORNER BRACKETS ══ */
 .corner{position:fixed;z-index:600;width:18px;height:18px;pointer-events:none;opacity:.25}
 .corner::before,.corner::after{content:'';position:absolute;background:#ff3300}
 .corner::before{width:100%;height:1px;top:0;left:0}
@@ -33,8 +23,6 @@ body{background:#000;color:#fff;font-family:'DM Mono',monospace;font-weight:300;
 .c-bl{bottom:1.25rem;left:1.25rem;transform:scaleY(-1)}
 .c-br{bottom:1.25rem;right:1.25rem;transform:scale(-1)}
 .c-tl{top:1.25rem;left:1.25rem}
-
-/* ══ NAV ══ */
 nav{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;justify-content:space-between;align-items:center;padding:clamp(.875rem,2vw,1.5rem) clamp(1rem,3vw,2.5rem);mix-blend-mode:difference}
 .nl{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,2vw,1.3rem);letter-spacing:.15em}
 .nr{display:flex;gap:clamp(.75rem,2vw,2rem);align-items:center}
@@ -44,8 +32,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;justify-content
 .avail::before{content:'';width:4px;height:4px;border-radius:50%;background:#00ff88;flex-shrink:0;animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
 @media(max-width:480px){.nr a{display:none}}
-
-/* ══ HAMBURGER BUTTON ══ */
 .hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:38px;height:38px;background:transparent;border:1px solid rgba(255,255,255,.12);cursor:none;z-index:1100;position:relative;flex-shrink:0;transition:border-color .25s}
 .hamburger:hover{border-color:rgba(255,51,0,.5)}
 .hamburger span{display:block;width:16px;height:1px;background:#fff;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s}
@@ -53,8 +39,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;justify-content
 .hamburger.open span:nth-child(2){opacity:0;width:0}
 .hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 @media(pointer:coarse){.hamburger{cursor:pointer}}
-
-/* ══ MOBILE MENU OVERLAY ══ */
 #mobileMenu{position:fixed;inset:0;z-index:1000;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(5rem,12vw,8rem) clamp(2rem,6vw,5rem);pointer-events:none;opacity:0;transform:translateX(100%);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1)}
 #mobileMenu.open{opacity:1;transform:translateX(0);pointer-events:all}
 #mobileMenu::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 4px);pointer-events:none}
@@ -80,20 +64,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:700;display:flex;justify-content
 .mm-contact-links a:hover{color:#ff3300}
 .mm-avail{font-size:clamp(.44rem,.64vw,.54rem);letter-spacing:.18em;text-transform:uppercase;color:rgba(0,255,136,.4);display:flex;align-items:center;gap:.4rem}
 .mm-avail::before{content:'';width:4px;height:4px;border-radius:50%;background:#00ff88;animation:blink 2s infinite}
-
-/* ══ PROGRESS BAR ══ */
 #prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#ff3300,#ff6600);z-index:800;width:0;transition:width .1s linear;box-shadow:0 0 8px rgba(255,51,0,.5)}
-
-/* ══ SCROLL INDICATOR ══ */
 #scrollind{position:fixed;right:clamp(.875rem,2vw,1.75rem);top:50%;transform:translateY(-50%);z-index:600;display:flex;flex-direction:column;gap:.5rem;align-items:center}
 .sind{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .3s;border:none;padding:0;cursor:none}
 .sind.on{background:#ff3300;transform:scale(1.6)}
 @media(pointer:coarse){.sind{width:8px;height:8px;cursor:pointer}}
-
-/* ══ SECTIONS ══ */
 section{position:relative;z-index:10;width:100%}
-
-/* ══ HERO ══ */
 #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(5rem,10vh,8rem) clamp(1rem,4vw,3rem) clamp(3rem,6vh,5rem)}
 .hero-tag{font-size:clamp(.48rem,.85vw,.65rem);letter-spacing:.25em;text-transform:uppercase;color:#ff3300;margin-bottom:clamp(.875rem,2vw,1.5rem);display:flex;align-items:center;gap:.75rem;opacity:0;animation:fadeUp .7s .2s forwards}
 .hero-tag::before{content:'';width:clamp(16px,2.5vw,28px);height:1px;background:#ff3300;flex-shrink:0}
@@ -118,15 +94,9 @@ section{position:relative;z-index:10;width:100%}
 .hero-scrollline{width:1px;height:50px;background:linear-gradient(to bottom,rgba(255,255,255,.25),transparent);animation:sl 2s ease-in-out infinite}
 @keyframes sl{0%,100%{transform:scaleY(1);opacity:.25}50%{transform:scaleY(.4);opacity:.9}}
 @media(max-width:480px){.hero-scroll{display:none}.hero-desc{max-width:100%}}
-
-/* ══ SECTION DIVIDER ══ */
 .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,51,0,.3),transparent);margin:0 clamp(1rem,4vw,3rem)}
-
-/* ══ SECTION LABEL ══ */
 .seclab{font-size:clamp(.48rem,.72vw,.6rem);letter-spacing:.28em;text-transform:uppercase;color:#ff3300;margin-bottom:clamp(1.25rem,3vw,2rem);display:flex;align-items:center;gap:.875rem}
 .seclab::before{content:'';width:28px;height:1px;background:#ff3300;flex-shrink:0}
-
-/* ══ NUMBERS ══ */
 #numbers{padding:clamp(4rem,8vh,7rem) clamp(1rem,4vw,3rem)}
 .numgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.05)}
 @media(max-width:700px){.numgrid{grid-template-columns:1fr 1fr}}
@@ -140,8 +110,6 @@ section{position:relative;z-index:10;width:100%}
 .numd{font-size:clamp(.62rem,.92vw,.75rem);color:rgba(255,255,255,.52);line-height:1.65}
 .bio{margin-top:clamp(2rem,4vw,3rem);font-size:clamp(.7rem,1.05vw,.875rem);color:rgba(255,255,255,.65);line-height:1.95;max-width:850px;border-left:2px solid #ff3300;padding-left:1.25rem}
 .bio strong{color:rgba(255,255,255,.88);font-weight:400}
-
-/* ══ SKILLS ══ */
 #skills{padding:clamp(4rem,8vh,7rem) clamp(1rem,4vw,3rem)}
 .skills-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(1.5rem,3vw,2.5rem);flex-wrap:wrap;gap:.5rem}
 .skills-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,8rem);letter-spacing:-.02em;line-height:.88}
@@ -162,19 +130,14 @@ section{position:relative;z-index:10;width:100%}
 .skbar{flex:1;height:1px;background:rgba(255,255,255,.07);margin:0 .875rem;position:relative;overflow:hidden}
 .skfill{position:absolute;top:0;left:0;height:100%;background:linear-gradient(90deg,#ff3300,#ff6600);transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.4,0,.2,1)}
 .skpct{font-size:clamp(.48rem,.68vw,.58rem);color:rgba(255,255,255,.5);white-space:nowrap}
-
-/* ══ PROJECTS ══ */
 #projects{padding:clamp(4rem,8vh,7rem) clamp(1rem,4vw,3rem)}
 .proj-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:clamp(1.5rem,3vw,2.5rem);flex-wrap:wrap;gap:.5rem}
 .proj-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,8rem);letter-spacing:-.02em;line-height:.88}
 .proj-hint{font-size:clamp(.46rem,.68vw,.58rem);letter-spacing:.15em;color:rgba(255,255,255,.18);text-transform:uppercase}
 .proj-scroll{display:flex;gap:clamp(.875rem,1.5vw,1.5rem);overflow-x:auto;scrollbar-width:none;padding-bottom:1rem;-webkit-overflow-scrolling:touch}
 .proj-scroll::-webkit-scrollbar{display:none}
-
-/* ══ PROJECT CARD LINK WRAPPER ══ */
 .pcard-link{text-decoration:none;color:inherit;display:block;flex-shrink:0}
 .pcard-link .pcard{flex-shrink:0}
-
 .pcard{width:clamp(260px,36vw,420px);background:#050505;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:transform .4s cubic-bezier(.34,1.56,.64,1),border-color .3s;cursor:none}
 .pcard:hover{transform:translateY(-10px) rotate(-.3deg);border-color:rgba(255,51,0,.3)}
 .pcard.feat{width:clamp(280px,42vw,500px);background:linear-gradient(135deg,rgba(255,51,0,.07),rgba(255,100,0,.02))}
@@ -190,8 +153,6 @@ section{position:relative;z-index:10;width:100%}
 .pcfoot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05);padding-top:.875rem;flex-wrap:wrap;gap:.5rem}
 .pcstack{font-size:clamp(.48rem,.68vw,.58rem);color:rgba(255,255,255,.48);letter-spacing:.05em}
 .pcbadge{font-size:clamp(.48rem,.68vw,.58rem);color:#ff3300;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,51,0,.25);padding:.15rem .5rem;background:rgba(255,51,0,.05);white-space:nowrap}
-
-/* ══ EXPERIENCE ══ */
 #experience{padding:clamp(4rem,8vh,7rem) clamp(1rem,4vw,3rem)}
 .exp-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,8rem);letter-spacing:-.02em;line-height:.88;margin-bottom:clamp(1.5rem,3vw,2.5rem)}
 .exrow{display:grid;grid-template-columns:clamp(110px,14vw,200px) 1fr;gap:clamp(1rem,3vw,3rem);padding:clamp(1.25rem,2.5vw,2rem) 0;border-bottom:1px solid rgba(255,255,255,.05);transition:background .25s,padding-left .25s}
@@ -206,8 +167,6 @@ section{position:relative;z-index:10;width:100%}
 .expts{list-style:none;display:flex;flex-direction:column;gap:.4rem}
 .expts li{font-size:clamp(.62rem,.92vw,.78rem);color:rgba(255,255,255,.65);line-height:1.65;padding-left:.875rem;position:relative}
 .expts li::before{content:'//';position:absolute;left:0;color:rgba(255,51,0,.6);font-size:.6rem}
-
-/* ══ EDUCATION ══ */
 #education{padding:clamp(4rem,8vh,7rem) clamp(1rem,4vw,3rem)}
 .edu-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,8rem);letter-spacing:-.02em;line-height:.88;margin-bottom:clamp(1.5rem,3vw,2.5rem)}
 .edugrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.05)}
@@ -221,8 +180,6 @@ section{position:relative;z-index:10;width:100%}
 .edudet{font-size:clamp(.62rem,.92vw,.8rem);color:rgba(255,255,255,.62);line-height:1.65}
 .eduaward{display:inline-flex;align-items:center;gap:.4rem;margin-top:.75rem;font-size:clamp(.48rem,.7vw,.6rem);letter-spacing:.12em;text-transform:uppercase;color:#ffd700;border:1px solid rgba(255,215,0,.2);padding:.2rem .55rem}
 .eduaward::before{content:'★';font-size:.5rem}
-
-/* ══ CONTACT ══ */
 #contact{padding:clamp(4rem,8vh,7rem) clamp(1rem,4vw,3rem) clamp(6rem,12vh,10rem);text-align:center}
 .ctitle{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,12vw,13rem);line-height:.82;letter-spacing:-.03em;margin-bottom:clamp(1rem,2.5vw,2rem)}
 .ctitle .cs{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.12);display:block}
@@ -236,13 +193,9 @@ section{position:relative;z-index:10;width:100%}
 .clink.cp:hover{background:#ff5520;box-shadow:0 12px 35px rgba(255,51,0,.4)}
 .cavail{margin-top:clamp(2rem,5vw,4rem);font-size:clamp(.44rem,.68vw,.56rem);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;gap:.75rem;flex-wrap:wrap}
 .cavail::before,.cavail::after{content:'';width:clamp(15px,3vw,30px);height:1px;background:rgba(255,255,255,.1)}
-
-/* ══ FOOTER ══ */
 footer{padding:clamp(1.25rem,2vw,1.75rem) clamp(1rem,4vw,3rem);border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;position:relative;z-index:10}
 footer p{font-size:clamp(.46rem,.68vw,.6rem);color:rgba(255,255,255,.15);letter-spacing:.08em}
 footer span{color:#ff3300}
-
-/* ══ ANIMATIONS ══ */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideInLeft{from{opacity:0;transform:translateX(-50px)}to{opacity:1;transform:translateX(0)}}
 @keyframes slideInRight{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}
@@ -264,7 +217,6 @@ footer span{color:#ff3300}
 <div id="cur"></div>
 <div id="prog"></div>
 
-<!-- ══ MOBILE MENU OVERLAY ══ -->
 <div id="mobileMenu">
   <div class="mmtag">Navigation</div>
   <nav class="mmlinks">
@@ -281,7 +233,7 @@ footer span{color:#ff3300}
       <a href="https://linkedin.com/in/dev-patel-988277249" target="_blank">LinkedIn ↗</a>
       <a href="https://github.com/thedev21" target="_blank">GitHub ↗</a>
     </div>
-    <div class="mm-avail">Available May 2026</div>
+    <div class="mm-avail">Available May 2027</div>
   </div>
 </div>
 
@@ -306,9 +258,8 @@ footer span{color:#ff3300}
   <button class="sind" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"></button>
 </div>
 
-<!-- ══ HERO ══ -->
 <section id="hero">
-  <div class="hero-tag">Full-Stack Developer · CS '26 · East Tennessee State University</div>
+  <div class="hero-tag">Full-Stack Developer · CS '27 · East Tennessee State University</div>
   <div class="heroname">
     <span class="hn1" data-t="DEV">DEV</span>
     <span class="hn2"><span class="ac">PATEL</span>.</span>
@@ -325,7 +276,6 @@ footer span{color:#ff3300}
 
 <div class="divider"></div>
 
-<!-- ══ NUMBERS ══ -->
 <section id="numbers">
   <div class="seclab">About</div>
   <div class="numgrid">
@@ -334,12 +284,11 @@ footer span{color:#ff3300}
     <div class="numb reveal"><div class="numv">40%</div><div class="numl">Perf Gain</div><div class="numd">Page load improvement on live app</div></div>
     <div class="numb reveal"><div class="numv">T5</div><div class="numl">Competition</div><div class="numd">Top 5 of 40+ teams — University Cave Robot Fight</div></div>
   </div>
-  <p class="bio reveal">CS senior at <strong>East Tennessee State University</strong>, graduating May 2026. I combine <strong>full-stack development</strong> with hands-on IT operations most devs only read about. Proficient in <strong>Java, Python, C#, PHP, JavaScript and SQL</strong>. Based in Glade Spring, VA — open to relocation.</p>
+  <p class="bio reveal">CS senior at <strong>East Tennessee State University</strong>, graduating May 2027 with a <strong>minor in Business Management</strong>. I combine <strong>full-stack development</strong> with hands-on IT operations most devs only read about. Proficient in <strong>Java, Python, C#, PHP, JavaScript and SQL</strong>. Based in Glade Spring, VA — open to relocation.</p>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ SKILLS ══ -->
 <section id="skills">
   <div class="skills-top reveal">
     <div class="skills-title">Skills<br>&amp; <span>Stack</span></div>
@@ -379,15 +328,12 @@ footer span{color:#ff3300}
 
 <div class="divider"></div>
 
-<!-- ══ PROJECTS ══ -->
 <section id="projects">
   <div class="proj-head reveal">
     <div class="proj-title">Selected<br>Projects</div>
     <div class="proj-hint">← Swipe to explore</div>
   </div>
   <div class="proj-scroll">
-
-    <!-- 01 - JobLog -->
     <a href="https://joblog-self.vercel.app" target="_blank" class="pcard-link reveal">
       <div class="pcard feat">
         <div class="pctop">
@@ -407,7 +353,6 @@ footer span{color:#ff3300}
       </div>
     </a>
 
-    <!-- 02 - Motel Time Clock -->
     <div class="pcard-link reveal">
       <div class="pcard">
         <div class="pctop">
@@ -427,7 +372,6 @@ footer span{color:#ff3300}
       </div>
     </div>
 
-    <!-- 03 - DataLens -->
     <a href="https://thedev21.github.io/datalens/" target="_blank" class="pcard-link reveal">
       <div class="pcard">
         <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#00ff88,#00d4ff,transparent)"></div><div class="pctoplabel" style="color:#00ff88;border-color:rgba(0,255,136,.3);background:rgba(0,255,136,.06)">Data · SQL · Live</div><div class="pctopnum">03</div><canvas class="pcgfx" id="fx1"></canvas></div>
@@ -442,7 +386,6 @@ footer span{color:#ff3300}
       </div>
     </a>
 
-    <!-- 04 - Robot Cave Fight -->
     <a href="https://github.com/thedev21" target="_blank" class="pcard-link reveal">
       <div class="pcard">
         <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">C# · AI</div><div class="pctopnum">04</div><canvas class="pcgfx" id="fx2"></canvas></div>
@@ -454,7 +397,6 @@ footer span{color:#ff3300}
       </div>
     </a>
 
-    <!-- 05 - Survey App -->
     <a href="https://thedev21.github.io/survey/" target="_blank" class="pcard-link reveal">
       <div class="pcard">
         <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">C# · SQL</div><div class="pctopnum">05</div><canvas class="pcgfx" id="fx3"></canvas></div>
@@ -466,7 +408,6 @@ footer span{color:#ff3300}
       </div>
     </a>
 
-    <!-- 06 - Searchlight -->
     <a href="https://thedev21.github.io/searchlight/" target="_blank" class="pcard-link reveal">
       <div class="pcard">
         <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#3b82f6,#6366f1,transparent)"></div><div class="pctoplabel" style="color:#3b82f6;border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.06)">Search · UX · Live</div><div class="pctopnum">06</div><canvas class="pcgfx" id="fx4"></canvas></div>
@@ -481,7 +422,6 @@ footer span{color:#ff3300}
       </div>
     </a>
 
-    <!-- 07 - COSMOS -->
     <a href="https://thedev21.github.io/cosmos/" target="_blank" class="pcard-link reveal">
       <div class="pcard">
         <div class="pctop"><div class="pctopbar" style="background:linear-gradient(90deg,#a855f7,#3b82f6,transparent)"></div><div class="pctoplabel" style="color:#a855f7;border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.06)">Physics · Canvas · Live</div><div class="pctopnum">07</div><canvas class="pcgfx" id="fx6"></canvas></div>
@@ -496,7 +436,6 @@ footer span{color:#ff3300}
       </div>
     </a>
 
-    <!-- 08 - PassGuard -->
     <a href="https://thedev21.github.io/passguard/" target="_blank" class="pcard-link reveal">
       <div class="pcard">
         <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Security · Live</div><div class="pctopnum">08</div><canvas class="pcgfx" id="fx7"></canvas></div>
@@ -508,7 +447,6 @@ footer span{color:#ff3300}
       </div>
     </a>
 
-    <!-- 09 - TypeBlitz -->
     <a href="https://thedev21.github.io/typeblitz/" target="_blank" class="pcard-link reveal">
       <div class="pcard">
         <div class="pctop"><div class="pctopbar"></div><div class="pctoplabel">Game · Live</div><div class="pctopnum">09</div><canvas class="pcgfx" id="fx8"></canvas></div>
@@ -520,7 +458,6 @@ footer span{color:#ff3300}
       </div>
     </a>
 
-    <!-- 10 - Split·it -->
     <a href="https://thedev21.github.io/splitit/" target="_blank" class="pcard-link reveal">
       <div class="pcard">
         <div class="pctop">
@@ -539,13 +476,11 @@ footer span{color:#ff3300}
         </div>
       </div>
     </a>
-
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ EXPERIENCE ══ -->
 <section id="experience">
   <div class="exp-title reveal">Work<br>Experience</div>
   <div class="exrow reveal">
@@ -559,7 +494,7 @@ footer span{color:#ff3300}
     <ul class="expts"><li>100+ weekly guests during peak season</li><li>Hardened admin auth — login errors cut 50%</li></ul></div>
   </div>
   <div class="exrow reveal">
-    <div><div class="exdate">May 2026</div><div class="excurr exnext">● Next</div></div>
+    <div><div class="exdate">May 2027</div><div class="excurr exnext">● Next</div></div>
     <div><div class="exrole" style="color:rgba(255,255,255,.3)">Your Company</div><div class="exco" style="color:rgba(255,255,255,.18)">Anywhere · Full-time</div>
     <ul class="expts"><li>Open to relocation · Engineering roles</li></ul></div>
   </div>
@@ -567,14 +502,13 @@ footer span{color:#ff3300}
 
 <div class="divider"></div>
 
-<!-- ══ EDUCATION ══ -->
 <section id="education">
   <div class="edu-title reveal">Education</div>
   <div class="edugrid reveal">
     <div class="edublock">
       <div class="edudeg">B.S. Computer Science</div>
       <div class="edusch">East Tennessee State University · Johnson City, TN</div>
-      <div class="edudet">Expected May 2026 · Data Structures · Algorithms · Web Dev · Databases · OOP</div>
+      <div class="edudet">Expected May 2027 · Minor in Business Management · Data Structures · Algorithms · Web Dev · Databases · OOP</div>
     </div>
     <div class="edublock">
       <div class="edudeg">A.S. Computer Science</div>
@@ -587,20 +521,19 @@ footer span{color:#ff3300}
 
 <div class="divider"></div>
 
-<!-- ══ CONTACT ══ -->
 <section id="contact">
   <div class="ctitle reveal">
     <span class="cs">LET'S</span>
     <span class="cf">BUILD</span>
     <span class="cr">SOMETHING.</span>
   </div>
-  <p class="csub reveal">Graduating May 2026. Open to full-time engineering roles. Full-stack skills + real ops experience most grads don't have.</p>
+  <p class="csub reveal">Graduating May 2027. Open to full-time engineering roles. Full-stack skills + real ops experience most grads don't have.</p>
   <div class="clinks reveal">
     <a href="mailto:pdev0168@gmail.com" class="clink cp">pdev0168@gmail.com</a>
     <a href="https://linkedin.com/in/dev-patel-988277249" target="_blank" class="clink">LinkedIn ↗</a>
     <a href="tel:+12764926340" class="clink">(276)492-6340</a>
   </div>
-  <div class="cavail reveal">Available for hire · May 2026 · Glade Spring VA · Open to Relocation</div>
+  <div class="cavail reveal">Available for hire · May 2027 · Glade Spring VA · Open to Relocation</div>
 </section>
 
 <footer>
@@ -609,34 +542,28 @@ footer span{color:#ff3300}
 </footer>
 
 <script>
-// ══ HAMBURGER MENU ══
 let menuOpen = false;
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-
 function toggleMenu() {
   menuOpen = !menuOpen;
   hamburger.classList.toggle('open', menuOpen);
   mobileMenu.classList.toggle('open', menuOpen);
   document.body.style.overflow = menuOpen ? 'hidden' : '';
 }
-
 function closeMenu() {
   menuOpen = false;
   hamburger.classList.remove('open');
   mobileMenu.classList.remove('open');
   document.body.style.overflow = '';
 }
-
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuOpen) closeMenu(); });
 
-// ══ GRAIN ══
 const gc=document.getElementById('grain'),gx=gc.getContext('2d');
 gc.width=250;gc.height=250;
 function mkG(){const d=gx.createImageData(250,250);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255;}gx.putImageData(d,0,0);}
 mkG();setInterval(mkG,65);
 
-// ══ BG CANVAS ══
 const bgc=document.getElementById('bgc'),bgx=bgc.getContext('2d');
 let W=bgc.width=window.innerWidth,H=bgc.height=window.innerHeight;
 let mx=W/2,my=H/2,t=0;
@@ -651,7 +578,6 @@ function drawBg(){
 }
 drawBg();
 
-// ══ CURSOR ══
 const cur=document.getElementById('cur');
 let cmx=W/2,cmy=H/2;
 const isTouch=('ontouchstart' in window);
@@ -664,7 +590,6 @@ if(!isTouch){
 }
 document.addEventListener('touchmove',e=>{mx=e.touches[0].clientX;my=e.touches[0].clientY;},{passive:true});
 
-// ══ SCROLL PROGRESS BAR ══
 const prog=document.getElementById('prog');
 window.addEventListener('scroll',()=>{
   const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
@@ -676,21 +601,18 @@ window.addEventListener('scroll',()=>{
   sinds.forEach((d,i)=>d.classList.toggle('on',i===active));
 },{passive:true});
 
-// ══ SCROLL REVEAL ══
 const revEls=document.querySelectorAll('.reveal,.reveal-left');
 const ro=new IntersectionObserver(entries=>{
   entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*80);ro.unobserve(e.target);}});
 },{threshold:.12});
 revEls.forEach(el=>ro.observe(el));
 
-// ══ SKILL BARS ══
 const skillObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.skfill').forEach(b=>b.style.transform=`scaleX(${b.dataset.w})`);skillObs.disconnect();}});
 },{threshold:.2});
 const skillSec=document.getElementById('skills');
 if(skillSec)skillObs.observe(skillSec);
 
-// ══ PROJECT CARD WAVEFORMS ══
 function cardFx(id,c1,c2){
   const cv=document.getElementById(id);if(!cv)return;
   cv.width=cv.offsetWidth||420;cv.height=cv.offsetHeight||170;
