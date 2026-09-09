@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Dev Patel — Portfolio World</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:#050505;overflow:hidden;height:100%;font-family:'DM Mono',monospace}
+  #game{display:block;width:100vw;height:100vh}
+  #back{position:fixed;top:14px;left:14px;z-index:50;font-family:monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;border:1px solid rgba(255,255,255,.15);padding:.5rem .8rem;transition:all .2s}
+  #back:hover{color:#fff;border-color:#ff3300}
+</style>
+</head>
+<body>
+<a id="back" href="../index.html">&larr; Back to site</a>
+<div id="game"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.80.1/phaser.min.js"></script>
+<script src="js/select-scene.js"></script>
+<script src="js/street-scene.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
