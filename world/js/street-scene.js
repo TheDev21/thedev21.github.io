@@ -9,6 +9,31 @@ class StreetScene extends Phaser.Scene {
     this.makeSkylineTexture();
     this.makeBuildingTexture();
     this.makeGroundTexture();
+    this.makeBillboardTexture('billboard_orange', 0xff3300);
+    this.makeBillboardTexture('billboard_cyan', 0x00d4ff);
+    this.makeBillboardTexture('billboard_purple', 0xa855f7);
+  }
+
+  // A larger, distinct foreground building meant to represent a single project.
+  makeBillboardTexture(key, neon) {
+    const g = this.make.graphics({ x: 0, y: 0, add: false });
+    const w = 220, h = 520;
+    g.fillStyle(0x0a0a0a, 1);
+    g.fillRect(0, 0, w, h);
+    g.lineStyle(2, neon, 0.5);
+    g.strokeRect(0, 0, w, h);
+    // window grid
+    g.fillStyle(neon, 0.22);
+    for (let wx = 14; wx < w - 14; wx += 20) {
+      for (let wy = 60; wy < h - 20; wy += 26) {
+        if (Math.random() < 0.6) g.fillRect(wx, wy, 12, 16);
+      }
+    }
+    // neon trim strip near top for the sign area
+    g.fillStyle(neon, 0.9);
+    g.fillRect(0, 30, w, 4);
+    g.generateTexture(key, w, h);
+    g.destroy();
   }
 
   makeSkylineTexture() {
@@ -87,6 +112,11 @@ class StreetScene extends Phaser.Scene {
     this.groundLayer = this.add.tileSprite(0, height - 80, worldWidth, 80, 'ground')
       .setOrigin(0, 0).setScrollFactor(1);
 
+    // Sample project billboards (static preview — proximity glow/prompt comes in a later step)
+    this.addBillboard(600, height, 'billboard_orange', '#ff3300', 'DATALENS', 'SQL ANALYZER');
+    this.addBillboard(1000, height, 'billboard_cyan', '#00d4ff', 'CHESS', 'AI ENGINE');
+    this.addBillboard(1400, height, 'billboard_purple', '#a855f7', 'COSMOS', 'GRAVITY SIM');
+
     // Arcade alley marker (placeholder for later step)
     this.add.text(worldWidth * 0.35, height - 520, 'ARCADE ->', {
       fontFamily: 'monospace', fontSize: '20px', color: '#ff3300'
@@ -111,6 +141,24 @@ class StreetScene extends Phaser.Scene {
     this.hint = this.add.text(width / 2, 24, 'WASD / Arrow keys to walk', {
       fontFamily: 'monospace', fontSize: '12px', color: 'rgba(255,255,255,0.5)'
     }).setScrollFactor(0).setOrigin(0.5);
+  }
+
+  addBillboard(x, groundY, textureKey, colorHex, titleText, subText) {
+    const img = this.add.image(x, groundY - 80, textureKey).setOrigin(0.5, 1);
+
+    this.add.text(x, groundY - 500, titleText, {
+      fontFamily: 'monospace', fontSize: '18px', color: colorHex, letterSpacing: 2
+    }).setOrigin(0.5).setAlpha(0.95);
+
+    this.add.text(x, groundY - 478, subText, {
+      fontFamily: 'monospace', fontSize: '10px', color: 'rgba(255,255,255,0.5)', letterSpacing: 1
+    }).setOrigin(0.5);
+
+    // gentle pulse to hint these will be interactive later
+    this.tweens.add({
+      targets: img, alpha: { from: 1, to: 0.75 }, duration: 1800 + Math.random() * 800,
+      yoyo: true, repeat: -1
+    });
   }
 
   update() {
